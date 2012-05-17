@@ -1,0 +1,5 @@
+- semantic_form_for [goal, step, checkin], :html => { :class => "ajax" } do |f|
+  - f.inputs do
+    = f.input :reminder_times_actual, :input_html => { :class => "submitOnChange" }, :label => "#{step.previous_due_date.strftime('%b %d, %Y')} to #{Date.today.strftime('%b %d, %Y')}"
+  - f.buttons do
+    = f.commit_button "Save", :html => { :class => "ajax" }

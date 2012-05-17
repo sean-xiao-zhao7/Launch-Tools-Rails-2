@@ -1,0 +1,33 @@
+-# TODO: Need to look into the wording for self assessment and feedback providers
+%ol= render :partial => 'assessment_takes/assessment_take', :collection => current_user.parent_assessment_takes
+%h2
+  = @assessment_take.assessment.title
+  Assessment Summary
+
+%h3= @assessment_take.progress
+
+=link_to 'Start/Continue', edit_assessment_assessment_take_path(:assessment_id => @assessment_take.assessment_id, :id => @assessment_take.id)
+
+%h2 Feedback Team
+
+- if @fbtakes.empty?
+  %p
+    Feedback gives you more perspectives to gain a better understanding of yourself.
+    =link_to 'Add a Feedback Member', atake_path(:action => "new_feedback_member", :assessment_id => @assessment_take.assessment.id ,:id => @assessment_take.id)
+    now.
+
+  =link_to 'Cancel', :back
+-else
+  %table
+    %thead
+      %th First Name
+      %th Last Name
+      %th Email
+      %th Actions
+    %tbody
+      = render :partial => 'feedback_take', :collection => @fbtakes
+
+  =button_to 'Add a Feedback Member', atake_path(:action => "new_feedback_member", :assessment_id => @assessment_take.assessment.id ,:id => @assessment_take.id)
+  =button_to "View Assessments", atake_path(:action => "index", :assessment_id => @assessment_take.assessment.id ,:id => @assessment_take.id)
+  =button_to "Back",:back 
+=button_to 'Results', :controller => "assessment_takes", :action => "results", :id => @assessment_take

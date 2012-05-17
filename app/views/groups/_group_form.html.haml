@@ -1,0 +1,18 @@
+- semantic_form_for [@group], :html => { :multipart => true } do |f|
+  - f.inputs do
+    %h3 Basic Information
+    = f.input :name, :required => true
+    = f.input :description
+    %h3 Custom Header
+    Note: You can chose to display a custom header for your group. If you would like to, your header image has to be 521px wide by 121px high, in a jpeg/png or gif format, and at most 500 KB.
+    %br
+    = f.file_field :picture
+    %h3 Custom Roles
+    = f.input :student_title, :label => "Student Role Title"
+    = f.input :coach_title, :label => "Coach Role Title"
+    = f.input :head_coach_title, :label => "Head-Coach Role Title"
+    %h3 Custom Permissions
+    = f.input :block_feedback, :label => "Block Feedback Access", :hint => "Block access to a student's assessment feedback until their coach unlocks it"
+    -if @group.owner && current_user.is_admin?
+      = f.input :owner_id, :label => 'Owner', :as => :select, :collection => @group.users, :hint => "Change the group's owner"
+  = f.buttons

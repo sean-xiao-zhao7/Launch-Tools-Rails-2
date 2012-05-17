@@ -1,0 +1,7 @@
+- form_for goal, :html => { :class => "ajax" } do |f|  
+  - if goal.completed
+    = f.hidden_field :completed, :value => "0"
+    = submit_tag "Restart Goal", :title => "Finish goal #{goal.description}"
+  - else  
+    = f.hidden_field :completed, :value => "1"
+    = submit_tag "Complete Goal", :title => "Finish goal #{goal.description}"

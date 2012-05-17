@@ -1,0 +1,6 @@
+%tr{ :class => cycle("even", "odd") }
+  %td= result.result_type.name
+  %td
+    = link_to 'Edit', edit_assessment_result_path(@assessment, result)
+    |
+    = link_to 'Destroy', assessment_result_path(@assessment, result), :confirm => 'Are you sure?', :method => :delete

@@ -1,0 +1,4 @@
+- if request.env['REQUEST_PATH'] =~ /goals*/ #does not allow editing on the dashboard
+  = link_to step.description, { :controller => :steps, :action => :edit, :id => step, :goal_id => step.goal }, :class => "ajax", :title => "Click to Edit this Step"
+- else
+  = link_to step.description, goals_path + "#goal_#{step.goal.id}"

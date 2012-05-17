@@ -1,0 +1,16 @@
+$('#goal_<%=@goal.id%> .target').html('<%= escape_javascript(render(:partial => "target", :locals => { :goal => @goal })) %>');
+
+
+// Target is selected first, then the category is focused to be selected.
+<% if @goal.has_target? %>
+	$('#goal_<%=@goal.id%> .category').html('<%= escape_javascript(render(:partial => "edit_category", :locals => { :goal => @goal })) %>');
+	$('#goal_<%=@goal.id%> .category select').focus();
+	$('#goal_<%=@goal.id%> .category select').blur(function() {
+    $('#goal_<%=@goal.id%> .category').html('<%= escape_javascript(render(:partial => "category", :locals => { :goal => @goal })) %>');
+  })		
+	$('select.ajax').change(function() {
+		$(this).closest('form').submit();
+	});
+<% else %>
+	$('#goal_<%=@goal.id%> .category').html('');
+<% end %>

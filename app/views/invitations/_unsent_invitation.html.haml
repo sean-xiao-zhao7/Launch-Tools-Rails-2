@@ -1,0 +1,9 @@
+%tr{:id => "unsent_invitation_#{unsent_invitation.id}", :class => cycle("odd", "even")}
+  %td= unsent_invitation.first_name
+  %td= unsent_invitation.last_name
+  %td= unsent_invitation.email
+  %td= unsent_invitation.role.name
+  %td
+    = link_to 'Edit', edit_group_invitation_path(@group, unsent_invitation)
+    |
+    = link_to 'Remove', group_invitation_path(@group, unsent_invitation), :method => :delete, :class => "remove_unsent_invitation"

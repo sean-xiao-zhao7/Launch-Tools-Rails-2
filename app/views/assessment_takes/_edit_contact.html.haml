@@ -1,0 +1,6 @@
+%h2 Add Feedback Person
+- semantic_form_for @contact, :url => { :controller =>"assessment_takes", :action => "add_feedback_member", :id => @assessment_take.id } do |f|
+  - f.inputs do
+    = f.input :title, :label => "Name"
+    = f.input :email
+  =f.submit 'Add'

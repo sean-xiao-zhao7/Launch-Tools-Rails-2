@@ -1,0 +1,7 @@
+%table
+  %thead
+    %th Name
+    %th Email
+    %th Actions
+  = render :partial => 'contact', :collection => @contacts
+= link_to 'Add Contact', new_contact_path(@user), :class => "popup major"

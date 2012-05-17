@@ -1,0 +1,5 @@
+<% unless flash[:error] == 'This person is already in your list of contacts.' %>	
+	$.fancybox("<h2>Error</h2>One or more of your inputs were invalid. Please redo your action.");
+<% else %>
+	$.fancybox("<h2>Error</h2><%= flash[:error] %>");
+<% end %>	

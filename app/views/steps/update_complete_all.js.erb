@@ -1,0 +1,5 @@
+$("#goal_<%= @goal.id %> .complete_button").html('<%=escape_javascript(render :partial => 'goals/complete_goal', :locals => { :goal => @goal })%>');
+
+<% if params[:step][:completed] == "1" %> // completed, remove the red
+		$("#step_<%= @step.id %>").attr("class", "step");	
+<% end %>

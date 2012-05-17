@@ -1,0 +1,9 @@
+%tr{ :class => cycle('odd', 'even') }
+  %td= assessment.title
+  %td= assessment.short_description
+  %td
+    = link_to 'Edit', edit_assessment_path(assessment)
+    |
+    = link_to 'Manage', assessment
+    |
+    = link_to 'Destroy', assessment, :confirm => 'Are you sure?', :method => :delete

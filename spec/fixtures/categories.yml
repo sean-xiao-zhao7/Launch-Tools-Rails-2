@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  assessment_id: 1
+  parent_id: 1
+  prev_id: 1
+  next_id: 1
+
+two:
+  name: MyString
+  description: MyText
+  assessment_id: 1
+  parent_id: 1
+  prev_id: 1
+  next_id: 1

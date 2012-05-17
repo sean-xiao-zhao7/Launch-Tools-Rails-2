@@ -1,0 +1,25 @@
+%h2
+  = @step.accountability.nil? ? 'Add Accountable Person' : 'Change Accountable Person'
+- unless current_user.contacts.empty?
+  %h3 Use an Existing Contact
+  - form_for :contact, :url => { :controller =>"steps", :action => "create_accountability", :id => @step.id, :goal_id => @goal.id}, :html => { :class => "ajax", :method => :put  } do |f|
+    = select_tag 'contact[id]', options_for_select(current_user.contacts.collect{ |c| [c.info, c.id] })
+    E-mail this person?
+    = check_box_tag :send_mail
+    - if @step.accountability.nil?
+      = f.submit 'Add'
+    - else
+      = f.submit 'Change'
+  %br
+  %br
+  %h1 Or
+  %br
+  %h3 Add a New Accountability Person
+- semantic_form_for @contact, :url => { :controller =>"steps", :action => "create_accountability", :id => @step.id, :goal_id => @goal.id, :new_contact => true }, :html => { :class => "ajax", :method => :put  } do |f|
+  - f.inputs do
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :email
+    E-mail this person?
+    = check_box_tag :send_mail
+    = f.submit 'Add'

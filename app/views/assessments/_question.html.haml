@@ -1,0 +1,54 @@
+%tr{:id=>"questions_#{question.id}", :class => cycle("even", "odd") }
+  %td
+    %b= 'Self Text: '
+    = question.content
+    %br
+    %b= 'Feedback Text: '
+    = question.feedback_content if question.feedback_content
+  %td= question.value
+  %td= (question.category)? question.category.name : 'None'
+  %td= (question.question_type)? question.question_type.name : 'None'
+  - if question.question_type.name == "Rate"
+    %td
+    %td
+      = link_to 'Edit', q_edit_url( :id => @assessment, :q => question, :action => "edit")
+      |
+      = link_to 'Destroy', assessment_question_path(@assessment, question), :confirm => 'Remove Question?', :method => :delete
+
+  - elsif question.question_type.name == "Choose-many"
+    %td
+      Number of options:
+      = question.McOptions.length
+    %td
+      = link_to "Options", assessment_question_mc_options_url(@assessment.id, question.id)
+      |
+      = link_to 'Edit', q_edit_url( :id => @assessment, :q => question, :controller => :questions, :action => :edit)
+      |
+      = link_to 'Destroy', assessment_question_path(@assessment, question), :confirm => 'Remove Question?', :method => :delete
+  - elsif question.question_type.name == "Choose-one"
+    %td
+      Number of options:
+      = question.McOptions.length
+    %td
+      = link_to "Options", assessment_question_mc_options_url(@assessment.id, question.id)
+      |
+      = link_to 'Edit', q_edit_url( :id => @assessment, :q => question, :controller => :questions, :action => :edit)
+      |
+      = link_to 'Destroy', assessment_question_path(@assessment, question), :confirm => 'Remove Question?', :method => :delete
+  - elsif question.question_type.name == "Text"
+    %td
+    %td
+      = link_to 'Edit', q_edit_url( :id => @assessment, :q => question, :controller => :questions, :action => :edit)
+      |
+      = link_to 'Destroy', assessment_question_path(@assessment, question), :confirm => 'Remove Question?', :method => :delete
+  - else
+    %td
+      = question.content
+    %td ERROR, QUESTION WITH INVALID TYPE
+  %td
+    = question.position
+  %td
+    %span{ :class=>"handle"}
+      [Change position]
+
+

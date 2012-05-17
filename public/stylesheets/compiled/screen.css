@@ -1,0 +1,1210 @@
+/* colors */
+/* measeurements */
+/* reset */
+/* line 21, ../../../app/stylesheets/screen.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* line 30, ../../../app/stylesheets/screen.scss */
+body {
+  line-height: 1;
+}
+
+/* line 33, ../../../app/stylesheets/screen.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 36, ../../../app/stylesheets/screen.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 40, ../../../app/stylesheets/screen.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* remember to define focus styles! */
+/*
+:focus {
+  outline: 0;
+}
+*/
+/* remember to highlight inserts somehow! */
+/* line 54, ../../../app/stylesheets/screen.scss */
+ins {
+  text-decoration: none;
+}
+
+/* line 57, ../../../app/stylesheets/screen.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+/* line 63, ../../../app/stylesheets/screen.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Layout of all the major aspects to house the background images*/
+/* line 71, ../../../app/stylesheets/screen.scss */
+#header_outer {
+  width: 100%;
+  background-image: url("../../images/spaceslicetop.jpg");
+}
+
+/* line 76, ../../../app/stylesheets/screen.scss */
+#header_inner {
+  width: 1020px;
+  height: 200px;
+  background-image: url("../../images/topbg.jpg");
+  margin: auto;
+  position: relative;
+}
+
+/* line 84, ../../../app/stylesheets/screen.scss */
+#flash_container {
+  position: absolute;
+  right: 20px;
+  top: 100px;
+}
+/* line 88, ../../../app/stylesheets/screen.scss */
+#flash_container #flash {
+  width: 190px;
+  padding: 10px;
+}
+
+/* line 94, ../../../app/stylesheets/screen.scss */
+#content_outer {
+  width: 100%;
+  background-image: url("../../images/spaceslicebottom.jpg");
+  background-repeat: repeat-x;
+}
+
+/* line 100, ../../../app/stylesheets/screen.scss */
+#content_middle {
+  width: 1020px;
+  margin: auto;
+  min-height: 300px;
+  background-image: url("../../images/spacebg.jpg");
+  background-repeat: no-repeat;
+}
+
+/* line 108, ../../../app/stylesheets/screen.scss */
+#footer {
+  background-image: url("../../images/footerbg.png");
+  height: 38px;
+  text-align: center;
+  padding-top: 70px;
+  background-repeat: repeat-x;
+}
+
+/* USER BAR */
+/* line 118, ../../../app/stylesheets/screen.scss */
+#user, #admin_menu_inner, #menu_inner {
+  line-height: 2em;
+}
+/* line 120, ../../../app/stylesheets/screen.scss */
+#user li, #admin_menu_inner li, #menu_inner li {
+  float: left;
+  margin-right: 20px;
+}
+/* line 124, ../../../app/stylesheets/screen.scss */
+#user a, #admin_menu_inner a, #menu_inner a {
+  color: white;
+  text-transform: lowercase;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px #000000;
+}
+/* line 130, ../../../app/stylesheets/screen.scss */
+#user a:hover, #admin_menu_inner a:hover, #menu_inner a:hover {
+  text-shadow: 2px 2px 1px #000000;
+}
+
+/* line 136, ../../../app/stylesheets/screen.scss */
+#user {
+  float: right;
+}
+
+/* line 140, ../../../app/stylesheets/screen.scss */
+#admin_menu_outer {
+  text-align: center;
+  margin-left: 390px;
+  position: relative;
+}
+
+/* line 146, ../../../app/stylesheets/screen.scss */
+#menu_outer {
+  position: absolute;
+  top: 160px;
+  left: 270px;
+}
+
+/* FLASH MESSAGE */
+/* line 154, ../../../app/stylesheets/screen.scss */
+#flash {
+  text-align: center;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+}
+/* line 160, ../../../app/stylesheets/screen.scss */
+#flash.notice {
+  background-color: #A4E7A0;
+  border: 1px solid #26722D;
+  background-color: rgba(164, 231, 160, 0.8);
+  color: #26722D;
+}
+/* line 166, ../../../app/stylesheets/screen.scss */
+#flash.error {
+  color: #900;
+  background-color: #F0A8A8;
+  border: 1px solid #900;
+  background-color: rgba(240, 168, 168, 0.8);
+}
+/* line 172, ../../../app/stylesheets/screen.scss */
+#flash.success {
+  color: #26722D;
+  background-color: #A4E7A0;
+  border: 1px solid #26722D;
+  background-color: rgba(164, 231, 160, 0.8);
+}
+
+/* LOGO */
+/* line 182, ../../../app/stylesheets/screen.scss */
+#logo {
+  width: 521px;
+  height: 121px;
+  position: absolute;
+  top: 45px;
+  left: 250px;
+  background-image: url("../../images/sign.png");
+}
+
+/* GENERAL CONTENT */
+/* line 193, ../../../app/stylesheets/screen.scss */
+#content_inner {
+  margin: 0 20px;
+  border: solid black 4px;
+  padding: 20px;
+  background-color: white;
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(18, 46, 97, 0.5);
+  position: relative;
+}
+
+/* List of users assessment takes */
+/* line 205, ../../../app/stylesheets/screen.scss */
+#assessment_takes {
+  margin-bottom: 20px;
+}
+/* line 207, ../../../app/stylesheets/screen.scss */
+#assessment_takes ol {
+  padding-bottom: 5px;
+}
+/* line 210, ../../../app/stylesheets/screen.scss */
+#assessment_takes > ol > li {
+  margin-bottom: 40px;
+}
+/* line 212, ../../../app/stylesheets/screen.scss */
+#assessment_takes > ol > li:last-of-type {
+  margin-bottom: 10px;
+}
+/* line 216, ../../../app/stylesheets/screen.scss */
+#assessment_takes .actions {
+  float: right;
+  width: 400px;
+  height: 1em;
+  text-align: right;
+}
+/* line 222, ../../../app/stylesheets/screen.scss */
+#assessment_takes .progress {
+  margin-right: 5px;
+  color: #333333;
+  display: inline;
+  float: right;
+}
+/* line 229, ../../../app/stylesheets/screen.scss */
+#assessment_takes .feedback p {
+  text-align: center;
+  color: #333333;
+}
+/* line 233, ../../../app/stylesheets/screen.scss */
+#assessment_takes .feedback li {
+  margin-bottom: 20px;
+}
+/* line 236, ../../../app/stylesheets/screen.scss */
+#assessment_takes .feedback .title {
+  margin-left: 20px;
+}
+
+/* line 243, ../../../app/stylesheets/screen.scss */
+body {
+  /* Default display for general elements (h1, h2, h3, a, forms, etc.) */
+  font-family: 'Myriad-Pro', 'Myriad', helvetica, arial, sans-serif;
+  background-color: #f4f5fb;
+  /* FOOTER STYLING - by Suraj */
+  /* Copying link styling from content inner */
+  /* GENERAL FORM LAYOUT */
+  /* ASSESSMENT INFORMATION PAGE */
+  /* TAKING ASSESSMENTS */
+  /* FANCY BOX STYLING */
+  /* SPECIFICS FOR INDIVIDUAL FORMS */
+  /* GROWTH PLAN */
+  /* RESULTS TABLE */
+  /* DASHBOARD WHEN NOT LOGGED IN (LANDING PAGE) */
+  /* ANALYSIS */
+  /* ADD FEEDBACK MEMBER FORM */
+}
+/* line 251, ../../../app/stylesheets/screen.scss */
+body h1 {
+  text-shadow: 1px 1px 2px #292929;
+  font-weight: bold;
+  color: #ff6500;
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+/* line 260, ../../../app/stylesheets/screen.scss */
+body h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #000000;
+  font-size: 1.5em;
+  border-bottom: solid black 1px;
+}
+/* line 269, ../../../app/stylesheets/screen.scss */
+body h3 {
+  text-align: left;
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* line 276, ../../../app/stylesheets/screen.scss */
+body li {
+  margin-bottom: 10px;
+}
+/* line 280, ../../../app/stylesheets/screen.scss */
+body table {
+  border: solid black 1px;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: white;
+  background: rgba(255, 255, 255, 0.8);
+}
+/* line 286, ../../../app/stylesheets/screen.scss */
+body table thead {
+  background-color: #1479b1;
+  color: white;
+}
+/* line 289, ../../../app/stylesheets/screen.scss */
+body table td, body table th {
+  padding: 5px 10px;
+  text-align: center;
+}
+/* line 293, ../../../app/stylesheets/screen.scss */
+body table tr.odd {
+  background-color: #f3f6fd;
+}
+/* line 298, ../../../app/stylesheets/screen.scss */
+body #content_inner a {
+  color: #0d58a6;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+/* line 305, ../../../app/stylesheets/screen.scss */
+body #content_inner a.major {
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  background: #0d58a6;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  display: inline;
+}
+/* line 319, ../../../app/stylesheets/screen.scss */
+body #content_inner a.major:hover {
+  background: #052547;
+  cursor: pointer;
+}
+/* line 328, ../../../app/stylesheets/screen.scss */
+body #footer a {
+  color: #0d58a6;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+/* line 335, ../../../app/stylesheets/screen.scss */
+body #footer a.major {
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  background: #0d58a6;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  display: inline;
+}
+/* line 349, ../../../app/stylesheets/screen.scss */
+body #footer a.major:hover {
+  background: #052547;
+  cursor: pointer;
+}
+/* line 358, ../../../app/stylesheets/screen.scss */
+body form li {
+  margin-bottom: 10px;
+}
+/* line 361, ../../../app/stylesheets/screen.scss */
+body form li.boolean label {
+  width: auto !important;
+}
+/* line 366, ../../../app/stylesheets/screen.scss */
+body form label {
+  width: auto;
+  display: block;
+  float: left;
+  line-height: 2em;
+}
+/* line 371, ../../../app/stylesheets/screen.scss */
+body form label:after {
+  content: ': ';
+}
+/* line 375, ../../../app/stylesheets/screen.scss */
+body form input:not([type=checkbox]) {
+  background: #ffffff;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  outline: none;
+  padding: 5px;
+  width: 210px;
+}
+/* line 384, ../../../app/stylesheets/screen.scss */
+body form input:not([type=checkbox]):focus {
+  background: #eaeaea;
+}
+/* line 388, ../../../app/stylesheets/screen.scss */
+body form input[type=submit] {
+  background: #0d58a6;
+  border: none;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  color: #ffffff;
+  display: block;
+  letter-spacing: 1px;
+  margin: auto;
+  padding: 7px 25px;
+  text-transform: lowercase;
+  width: auto;
+  font-size: 1em;
+  font-weight: bold;
+}
+/* line 404, ../../../app/stylesheets/screen.scss */
+body form input[type=submit]:hover {
+  background: #052547;
+  cursor: pointer;
+}
+/* line 411, ../../../app/stylesheets/screen.scss */
+body form.button-to {
+  display: inline;
+}
+/* line 413, ../../../app/stylesheets/screen.scss */
+body form.button-to div {
+  display: inline;
+}
+/* line 415, ../../../app/stylesheets/screen.scss */
+body form.button-to div input {
+  display: inline;
+}
+/* line 423, ../../../app/stylesheets/screen.scss */
+body .content {
+  margin-bottom: 20px;
+}
+/* line 431, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take table td {
+  padding: 0 5px;
+}
+/* line 434, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take table td label:after {
+  content: '';
+}
+/* line 438, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take table td input {
+  width: auto;
+  margin-top: 10px;
+}
+/* line 445, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li {
+  margin-bottom: 10px;
+  border-bottom: solid #666666 1px;
+  padding-bottom: 10px;
+}
+/* line 449, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li .question_number {
+  float: left;
+  font-size: 2em;
+  position: relative;
+  width: 45px;
+  overflow: hidden;
+  line-height: 1em;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 10px;
+}
+/* line 460, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li .question_content {
+  line-height: 1.2em;
+  margin-bottom: 10px;
+  margin-left: 55px;
+}
+/* line 464, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li .question_content label {
+  float: none;
+}
+/* line 468, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li > ol.rate {
+  float: right;
+  margin: 0;
+}
+/* line 472, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li > ol {
+  margin-left: 85px;
+  margin-right: 65px;
+}
+/* line 475, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li > ol > li {
+  clear: both;
+  margin-bottom: 10px;
+  line-height: 1.2em;
+}
+/* line 479, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li > ol > li input[type=checkbox] {
+  float: left;
+}
+/* line 482, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li > ol > li .answer_content {
+  margin-left: 20px;
+  color: #666666;
+}
+/* line 485, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li > ol > li .answer_content label {
+  line-height: 1.2em;
+  float: none;
+  margin-bottom: 10px;
+}
+/* line 489, ../../../app/stylesheets/screen.scss */
+body .edit_assessment_take > ol > li > ol > li .answer_content label:after {
+  content: '';
+}
+/* line 500, ../../../app/stylesheets/screen.scss */
+body .pagination {
+  margin-top: 1em;
+  text-align: center;
+}
+/* line 503, ../../../app/stylesheets/screen.scss */
+body .pagination input[type=submit] {
+  background: #005994;
+  border: none;
+  color: #ffffff;
+  display: inline;
+  letter-spacing: 1px;
+  margin: auto;
+  padding: 7px 25px;
+  text-shadow: 0 1px 1px #000000;
+  text-transform: uppercase;
+}
+/* line 513, ../../../app/stylesheets/screen.scss */
+body .pagination input[type=submit]:hover {
+  background: #0096fb;
+  cursor: pointer;
+}
+/* line 518, ../../../app/stylesheets/screen.scss */
+body .pagination input[disabled=disabled] {
+  display: none;
+}
+/* line 521, ../../../app/stylesheets/screen.scss */
+body .pagination input#previous_page {
+  -moz-border-radius-topleft: 20px;
+  -webkit-border-top-left-radius: 20px;
+  -khtml-border-radius-topleft: 20px;
+  border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -khtml-border-radius-bottomleft: 20px;
+  border-radius-bottomleft: 20px;
+}
+/* line 531, ../../../app/stylesheets/screen.scss */
+body .pagination input#next_page {
+  -moz-border-radius-topright: 20px;
+  -webkit-border-top-right-radius: 20px;
+  -khtml-border-radius-topright: 20px;
+  border-radius-topright: 20px;
+  -moz-border-radius-bottomright: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  -khtml-border-radius-bottomright: 20px;
+  border-radius-bottomright: 20px;
+}
+/* line 545, ../../../app/stylesheets/screen.scss */
+body #fancybox-outer {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding: 20px;
+}
+/* line 553, ../../../app/stylesheets/screen.scss */
+body #fancybox-inner {
+  padding: 20px;
+}
+/* line 560, ../../../app/stylesheets/screen.scss */
+body form#new_contact label {
+  width: 70px;
+}
+/* line 566, ../../../app/stylesheets/screen.scss */
+body form#new_user_session label {
+  width: 90px;
+}
+/* line 570, ../../../app/stylesheets/screen.scss */
+body form#new_user_session li.boolean label {
+  margin-left: 90px;
+}
+/* line 572, ../../../app/stylesheets/screen.scss */
+body form#new_user_session li.boolean label:after {
+  content: '';
+}
+/* line 577, ../../../app/stylesheets/screen.scss */
+body form#new_user_session li.commit {
+  float: left;
+  margin-right: 20px;
+}
+/* line 581, ../../../app/stylesheets/screen.scss */
+body form#new_user_session a {
+  line-height: 2em;
+}
+/* line 586, ../../../app/stylesheets/screen.scss */
+body form#new_user {
+  counter-reset: fieldsets;
+}
+/* line 589, ../../../app/stylesheets/screen.scss */
+body form#new_user fieldset ol li label.error:not(.success) {
+  float: right;
+  position: relative;
+  margin-top: 6px;
+  background-image: url("../../images/cross.png");
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+}
+/* line 598, ../../../app/stylesheets/screen.scss */
+body form#new_user fieldset ol li label.success {
+  float: right;
+  position: relative;
+  margin-top: 6px;
+  background-image: url("../../images/check.png");
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+}
+/* line 608, ../../../app/stylesheets/screen.scss */
+body form#new_user fieldset fieldset legend {
+  color: #111111;
+  font-size: 1em;
+  font-weight: normal;
+  padding-bottom: 0;
+  text-shadow: none;
+}
+/* line 616, ../../../app/stylesheets/screen.scss */
+body form#new_user fieldset fieldset label:hover {
+  cursor: pointer;
+}
+/* line 620, ../../../app/stylesheets/screen.scss */
+body form#new_user fieldset fieldset ol li label {
+  width: 75px;
+  line-height: 1em;
+}
+/* line 623, ../../../app/stylesheets/screen.scss */
+body form#new_user fieldset fieldset ol li label input[type=radio] {
+  margin-top: 10px;
+}
+/* line 630, ../../../app/stylesheets/screen.scss */
+body form#new_user > fieldset > legend {
+  text-align: left;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #000000;
+  font-size: 1.5em;
+  border-bottom: solid black 1px;
+  display: block;
+}
+/* line 638, ../../../app/stylesheets/screen.scss */
+body form#new_user > fieldset > legend:before {
+  content: "Step " counter(fieldsets) ": ";
+  counter-increment: fieldsets;
+}
+/* line 643, ../../../app/stylesheets/screen.scss */
+body form#new_user label {
+  float: left;
+  font-size: 1em;
+  width: 150px;
+}
+/* line 648, ../../../app/stylesheets/screen.scss */
+body form#new_user select {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  border-radius: 3px;
+  width: 225px;
+  border: none;
+  height: 2em;
+  margin-top: 5px;
+}
+/* line 659, ../../../app/stylesheets/screen.scss */
+body form#new_user li.radio legend label {
+  width: 150px;
+}
+/* line 662, ../../../app/stylesheets/screen.scss */
+body form#new_user li.radio label {
+  width: 100px;
+  line-height: 2em;
+}
+/* line 665, ../../../app/stylesheets/screen.scss */
+body form#new_user li.radio label:after {
+  content: '';
+}
+/* line 669, ../../../app/stylesheets/screen.scss */
+body form#new_user li.radio input[type=radio] {
+  float: left;
+  margin-right: 5px;
+  width: auto;
+  margin-height: 5px;
+}
+/* line 679, ../../../app/stylesheets/screen.scss */
+body form.contact fieldset.inputs ol li label {
+  width: 100px !important;
+}
+/* line 687, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal, body ul#completed_goals li.goal {
+  padding-bottom: 20px;
+  border-bottom: solid black 1px;
+}
+/* line 690, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal:first-of-type, body ul#completed_goals li.goal:first-of-type {
+  border-top: solid black 1px;
+}
+/* line 693, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal > .checkbox, body ul#completed_goals li.goal > .checkbox {
+  float: left;
+  line-height: 2.6em;
+}
+/* line 697, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal > .description, body ul#completed_goals li.goal > .description {
+  font-size: 1em;
+  font-weight: bold;
+}
+/* line 701, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .description a, body ul#completed_goals li.goal .description a {
+  text-decoration: none;
+  color: black;
+  line-height: 2.6em;
+  text-transform: none;
+}
+/* line 707, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal > .category, body ul#goals li.goal > .target, body ul#completed_goals li.goal > .category, body ul#completed_goals li.goal > .target {
+  margin-top: 10px;
+}
+/* line 711, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal > .category > form.formtastic, body ul#goals li.goal > .description > form.formtastic, body ul#goals li.goal > .target > form.formtastic, body ul#completed_goals li.goal > .category > form.formtastic, body ul#completed_goals li.goal > .description > form.formtastic, body ul#completed_goals li.goal > .target > form.formtastic {
+  border: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+/* line 717, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal > .category > form.formtastic > fieldset, body ul#goals li.goal > .description > form.formtastic > fieldset, body ul#goals li.goal > .target > form.formtastic > fieldset, body ul#completed_goals li.goal > .category > form.formtastic > fieldset, body ul#completed_goals li.goal > .description > form.formtastic > fieldset, body ul#completed_goals li.goal > .target > form.formtastic > fieldset {
+  display: inline;
+  width: auto;
+}
+/* line 721, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal > .category > form.formtastic > fieldset > ol > li > label, body ul#goals li.goal > .description > form.formtastic > fieldset > ol > li > label, body ul#goals li.goal > .target > form.formtastic > fieldset > ol > li > label, body ul#completed_goals li.goal > .category > form.formtastic > fieldset > ol > li > label, body ul#completed_goals li.goal > .description > form.formtastic > fieldset > ol > li > label, body ul#completed_goals li.goal > .target > form.formtastic > fieldset > ol > li > label {
+  width: auto;
+  margin: 0 .5em 0 0;
+  padding: 0;
+  line-height: 1.2em;
+  display: none;
+}
+/* line 728, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal > .category > form.formtastic > fieldset > ol > li select, body ul#goals li.goal > .description > form.formtastic > fieldset > ol > li select, body ul#goals li.goal > .target > form.formtastic > fieldset > ol > li select, body ul#completed_goals li.goal > .category > form.formtastic > fieldset > ol > li select, body ul#completed_goals li.goal > .description > form.formtastic > fieldset > ol > li select, body ul#completed_goals li.goal > .target > form.formtastic > fieldset > ol > li select {
+  width: auto;
+}
+/* line 735, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .reward, body ul#completed_goals li.goal .reward {
+  float: left;
+  width: 7em;
+  margin: 0 10px;
+  text-align: center;
+}
+/* line 740, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .reward img, body ul#completed_goals li.goal .reward img {
+  height: 100px;
+  width: 100px;
+  padding: .1em;
+  margin: .5em;
+  border: solid 1px black;
+  background-color: white;
+}
+/* line 748, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .reward a, body ul#completed_goals li.goal .reward a {
+  font-size: .7em;
+}
+/* line 752, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .target, body ul#completed_goals li.goal .target {
+  float: right;
+}
+/* line 754, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .target a, body ul#completed_goals li.goal .target a {
+  text-decoration: none;
+  color: grey;
+  font-style: italic;
+  margin-right: .5em;
+  line-height: 1.4em;
+}
+/* line 762, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .category, body ul#completed_goals li.goal .category {
+  float: right;
+  color: grey;
+}
+/* line 765, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .category:before, body ul#completed_goals li.goal .category:before {
+  content: "  |  ";
+}
+/* line 768, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .category a, body ul#completed_goals li.goal .category a {
+  text-decoration: none;
+  color: grey;
+  font-style: italic;
+  line-height: 1.4em;
+}
+/* line 775, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .actions, body ul#completed_goals li.goal .actions {
+  clear: both;
+  text-align: right;
+}
+/* line 779, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .checkbox, body ul#completed_goals li.goal .checkbox {
+  display: inline;
+}
+/* line 781, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .checkbox form, body ul#completed_goals li.goal .checkbox form {
+  display: inline;
+}
+/* line 785, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .add_step, body ul#completed_goals li.goal .add_step {
+  margin-left: 8em;
+}
+/* line 788, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps, body ul#completed_goals li.goal .steps {
+  margin-top: 1em;
+  margin-left: 8em;
+}
+/* line 791, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul, body ul#completed_goals li.goal .steps ul {
+  margin-bottom: 1em;
+}
+/* line 793, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step, body ul#completed_goals li.goal .steps ul li.step {
+  padding: 10px;
+  margin-bottom: 1em;
+}
+/* line 796, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step.late, body ul#completed_goals li.goal .steps ul li.step.late {
+  background-color: #F0A8A8;
+  border: solid #900 1px;
+}
+/* line 800, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step.edit, body ul#completed_goals li.goal .steps ul li.step.edit {
+  display: none;
+}
+/* line 804, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step form.step fieldset.accountability, body ul#goals li.goal .steps ul li.step form.step fieldset.due, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.accountability, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.due {
+  width: 300px;
+  margin-bottom: 20px;
+  border: solid black 1px;
+  padding: 20px;
+}
+/* line 805, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step form.step fieldset.accountability legend, body ul#goals li.goal .steps ul li.step form.step fieldset.due legend, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.accountability legend, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.due legend {
+  margin-left: 2em;
+}
+/* line 809, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step form.step fieldset.accountability ol li label, body ul#goals li.goal .steps ul li.step form.step fieldset.due ol li label, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.accountability ol li label, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.due ol li label {
+  display: block;
+  width: 115px;
+  float: left;
+  line-height: 2em;
+}
+/* line 815, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step form.step fieldset.accountability ol li input, body ul#goals li.goal .steps ul li.step form.step fieldset.due ol li input, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.accountability ol li input, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.due ol li input {
+  width: 150px;
+}
+/* line 824, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step form.step fieldset.due, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.due {
+  float: left;
+  margin-right: 20px;
+}
+/* line 829, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step form.step fieldset.description legend, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.description legend {
+  position: relative;
+  left: 2000px;
+}
+/* line 833, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step form.step fieldset.description label, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.description label {
+  margin-right: 1em;
+}
+/* line 836, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step form.step fieldset.description input, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.description input {
+  width: 670px;
+}
+/* line 840, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step form.step fieldset.buttons, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.buttons {
+  line-height: 2em;
+}
+/* line 842, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step form.step fieldset.buttons li.commit, body ul#completed_goals li.goal .steps ul li.step form.step fieldset.buttons li.commit {
+  float: left;
+  margin-right: 10px;
+}
+/* line 849, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step .checkbox input, body ul#completed_goals li.goal .steps ul li.step .checkbox input {
+  display: inline;
+  position: relative;
+  top: -2px;
+}
+/* line 855, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step .step_details, body ul#completed_goals li.goal .steps ul li.step .step_details {
+  font-size: .9em;
+  margin-left: 3em;
+  color: grey;
+  clear: none;
+}
+/* line 861, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step .step_actions, body ul#completed_goals li.goal .steps ul li.step .step_actions {
+  float: right;
+  line-height: 1em;
+}
+/* line 865, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step > .description, body ul#completed_goals li.goal .steps ul li.step > .description {
+  font-size: 1em;
+  display: inline;
+  width: auto;
+}
+/* line 869, ../../../app/stylesheets/screen.scss */
+body ul#goals li.goal .steps ul li.step > .description a, body ul#completed_goals li.goal .steps ul li.step > .description a {
+  text-decoration: none;
+  color: black;
+  text-transform: none;
+}
+/* line 881, ../../../app/stylesheets/screen.scss */
+body li.step {
+  margin-bottom: 1em;
+}
+/* line 883, ../../../app/stylesheets/screen.scss */
+body li.step .checkbox {
+  display: inline;
+}
+/* line 885, ../../../app/stylesheets/screen.scss */
+body li.step .checkbox form {
+  display: inline;
+}
+/* line 888, ../../../app/stylesheets/screen.scss */
+body li.step .checkbox input {
+  display: inline;
+  position: relative;
+  top: -2px;
+}
+/* line 894, ../../../app/stylesheets/screen.scss */
+body li.step .step_details {
+  font-size: .9em;
+  margin-left: 3em;
+  color: grey;
+}
+/* line 899, ../../../app/stylesheets/screen.scss */
+body li.step .step_actions {
+  float: right;
+  line-height: 2.2em;
+}
+/* line 903, ../../../app/stylesheets/screen.scss */
+body li.step > .description {
+  font-size: 1em;
+  display: inline;
+  width: auto;
+}
+/* line 907, ../../../app/stylesheets/screen.scss */
+body li.step > .description a {
+  text-decoration: none;
+  color: black;
+  text-transform: none;
+}
+/* line 917, ../../../app/stylesheets/screen.scss */
+body #results {
+  border: solid black 1px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+/* line 921, ../../../app/stylesheets/screen.scss */
+body #results td {
+  padding: .5em;
+}
+/* line 925, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr {
+  text-align: center;
+}
+/* line 926, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr > td.result {
+  padding: 0;
+}
+/* line 928, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr > td.result > table {
+  margin: 0 !important;
+  width: auto;
+  border: none;
+}
+/* line 932, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr > td.result > table tr {
+  border-left: solid black 1px;
+}
+/* line 934, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr > td.result > table tr td {
+  border-right: solid black 1px;
+  width: 55px;
+}
+/* line 941, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr > td.attribute {
+  text-align: left;
+  width: 20%;
+}
+/* line 945, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr > td.score {
+  width: 10%;
+}
+/* line 948, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr > td.total {
+  width: 10%;
+}
+/* line 952, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr.parent_category {
+  background-color: #1479b1;
+  color: white;
+}
+/* line 955, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr.parent_category > .result_container {
+  display: none;
+}
+/* line 959, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr.odd {
+  background-color: #f3f6fd;
+}
+/* line 962, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr.child_category {
+  border-right: solid #1479b1 1px;
+}
+/* line 963, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr.child_category td.attribute {
+  padding-left: 2em;
+}
+/* line 968, ../../../app/stylesheets/screen.scss */
+body #results > tbody > tr span.question_number {
+  padding: 0 .1em;
+  color: grey;
+  font-size: .8em;
+}
+/* line 979, ../../../app/stylesheets/screen.scss */
+body #tour {
+  width: 900px;
+  margin: 0 auto;
+  border: solid black 2px;
+  position: relative;
+  margin-bottom: 20px;
+}
+/* line 985, ../../../app/stylesheets/screen.scss */
+body #tour #scroll {
+  clear: left;
+  overflow: auto;
+  height: 250px;
+  background-color: white;
+  position: relative;
+}
+/* line 992, ../../../app/stylesheets/screen.scss */
+body #tour #tabs {
+  height: 36px;
+  border-top: solid black 2px;
+  background-color: lightgrey;
+}
+/* line 996, ../../../app/stylesheets/screen.scss */
+body #tour #tabs li {
+  float: left;
+  margin: 0;
+  top: 9px;
+  position: relative;
+}
+/* line 1002, ../../../app/stylesheets/screen.scss */
+body #tour #tabs a {
+  text-decoration: none;
+  color: black;
+  padding: 10px 59px;
+  margin-left: 10px;
+  text-transform: none;
+}
+/* line 1008, ../../../app/stylesheets/screen.scss */
+body #tour #tabs a.selected {
+  background-color: white;
+  border-right: solid black 2px;
+  border-left: solid black 2px;
+}
+/* line 1015, ../../../app/stylesheets/screen.scss */
+body #tour .panel {
+  height: 210px;
+  width: 860px;
+  padding: 20px;
+}
+/* line 1022, ../../../app/stylesheets/screen.scss */
+body #testimonial, body #feed {
+  height: 200px;
+  width: 30%;
+  border: solid black 2px;
+  padding: 20px;
+}
+/* line 1029, ../../../app/stylesheets/screen.scss */
+body #testimonial {
+  margin-left: 80px;
+}
+/* line 1033, ../../../app/stylesheets/screen.scss */
+body #feed {
+  margin-right: 80px;
+  float: right;
+}
+/* line 1040, ../../../app/stylesheets/screen.scss */
+body #table_of_contents {
+  width: 140px;
+  background-color: lightgrey;
+  padding: 20px;
+  border: solid grey 1px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  left: 770px;
+}
+/* line 1049, ../../../app/stylesheets/screen.scss */
+body #table_of_contents li {
+  list-style-type: decimal;
+  margin-left: 20px;
+}
+/* line 1052, ../../../app/stylesheets/screen.scss */
+body #table_of_contents li:last-of-type {
+  margin-bottom: 0;
+}
+/* line 1055, ../../../app/stylesheets/screen.scss */
+body #table_of_contents li a {
+  text-transform: none;
+}
+/* line 1059, ../../../app/stylesheets/screen.scss */
+body #table_of_contents.fixed {
+  position: fixed;
+  top: 20px;
+}
+/* line 1065, ../../../app/stylesheets/screen.scss */
+body #container {
+  width: 730px;
+}
+/* line 1071, ../../../app/stylesheets/screen.scss */
+body #new_contact_form {
+  float: left;
+  margin-right: 50px;
+  padding-right: 50px;
+  border-right: solid lightgrey 1px;
+}
+/* line 1078, ../../../app/stylesheets/screen.scss */
+body #add_feedback_person {
+  width: 700px;
+  position: relative;
+}
+/* line 1082, ../../../app/stylesheets/screen.scss */
+body #or {
+  position: absolute;
+  top: 70px;
+  left: 350px;
+  font-size: 2em;
+  background-color: white;
+}
+/* line 1090, ../../../app/stylesheets/screen.scss */
+body #dashboard #steps .step_actions {
+  display: none;
+}
+
+/* line 1096, ../../../app/stylesheets/screen.scss */
+.ui-menu {
+  width: 275px;
+}
+/* line 1098, ../../../app/stylesheets/screen.scss */
+.ui-menu li {
+  line-height: 1.5em;
+  font-size: .75em;
+}
+
+/* line 1104, ../../../app/stylesheets/screen.scss */
+.dialog {
+  position: static;
+}
+
+/* line 1108, ../../../app/stylesheets/screen.scss */
+div.error_page_message {
+  width: 25em;
+  padding: 0 4em;
+  margin: 4em auto 0 auto;
+  border: 1px solid #ccc;
+  border-right-color: #999;
+  border-bottom-color: #999;
+}
+
+/* line 1117, ../../../app/stylesheets/screen.scss */
+.handle:hover {
+  cursor: move;
+}

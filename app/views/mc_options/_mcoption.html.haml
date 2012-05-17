@@ -1,0 +1,13 @@
+%tr
+  %td
+    %b= 'Self Text: '
+    = mcoption.content
+    %br
+    %b= 'Feedback Text: '
+    = mcoption.feedback_content if mcoption.feedback_content
+  %td= mcoption.category.name if !mcoption.category.nil?
+  %td= mcoption.value
+  %td
+    = link_to 'Edit', edit_assessment_question_mc_option_path(:assessment_id=>@a, :question_id=>@q.id,:id=>mcoption.id), :method => :get
+    |
+    = link_to 'Delete', assessment_question_mc_option_path(:assessment_id=>@a, :question_id=>@q.id,:id=>mcoption.id), :confirm => 'Remove Option?', :method => :delete

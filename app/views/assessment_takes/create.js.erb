@@ -1,0 +1,5 @@
+$('#dialog').slideToggle();
+$('#assessment_takes ol').append('<%= escape_javascript(render(:partial => "assessment_take", :locals => { :assessment_take => @assessment_take })) %>');
+$('#assessment_take_<%=@assessment_take.id%>').hide().slideToggle();
+$('#no_assessments').slideToggle();
+$('#assessment_<%=@assessment_take.assessment.id%>').slideToggle();

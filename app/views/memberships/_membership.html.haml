@@ -1,0 +1,11 @@
+%tr{ :class => cycle("odd", "even")}
+  %td= membership.user.first_name
+  %td= membership.user.last_name
+  %td= membership.user.email
+  %td= membership.role.name
+  %td
+    = link_to 'View', group_membership_path(@group,membership)
+    |
+    = link_to 'Edit', edit_group_membership_path(@group,membership)
+    |
+    = link_to 'Destroy', group_membership_path(@group,membership), :confirm => 'Are you sure?', :method => :delete

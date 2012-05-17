@@ -1,0 +1,370 @@
+/* reset */
+/* line 11, ../../../app/stylesheets/print.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 12px;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* line 20, ../../../app/stylesheets/print.scss */
+body {
+  line-height: 1;
+}
+
+/* line 23, ../../../app/stylesheets/print.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../app/stylesheets/print.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 30, ../../../app/stylesheets/print.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* remember to define focus styles! */
+/*
+:focus {
+  outline: 0;
+}
+*/
+/* remember to highlight inserts somehow! */
+/* line 44, ../../../app/stylesheets/print.scss */
+ins {
+  text-decoration: none;
+}
+
+/* line 47, ../../../app/stylesheets/print.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+/* line 53, ../../../app/stylesheets/print.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*END OF RESET*/
+/* WHAT NOT TO DISPLAY */
+/* line 63, ../../../app/stylesheets/print.scss */
+#footnotes_debug, #footer, #user, #menu_outer, #admin_menu_outer, #uservoice-feedback, a.major, #table_of_contents, .step_actions, .actions, .reward a:last-of-type, .steps ul:last-of-type {
+  display: none;
+}
+
+/* HEADER */
+/* line 69, ../../../app/stylesheets/print.scss */
+#logo {
+  width: 260px;
+  height: 60px;
+  float: right;
+}
+/* line 73, ../../../app/stylesheets/print.scss */
+#logo img {
+  width: 260px;
+  height: 60px;
+}
+
+/* line 80, ../../../app/stylesheets/print.scss */
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* line 85, ../../../app/stylesheets/print.scss */
+h1 {
+  text-align: center;
+  margin-bottom: 1em;
+  font-weight: bold;
+  font-size: 18px;
+  clear: both;
+}
+
+/* line 93, ../../../app/stylesheets/print.scss */
+h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  border-bottom: solid black 1px;
+  clear: both;
+}
+
+/* RESULTS TABLE */
+/* line 104, ../../../app/stylesheets/print.scss */
+#results {
+  border-left: solid black 1px;
+  border-right: solid black 1px;
+  border-bottom: solid black 1px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+/* line 110, ../../../app/stylesheets/print.scss */
+#results td {
+  padding: .5em;
+}
+/* line 114, ../../../app/stylesheets/print.scss */
+#results > tbody > tr {
+  text-align: center;
+}
+/* line 115, ../../../app/stylesheets/print.scss */
+#results > tbody > tr > td.result {
+  padding: 0;
+}
+/* line 117, ../../../app/stylesheets/print.scss */
+#results > tbody > tr > td.result > table {
+  margin: 0 !important;
+}
+/* line 119, ../../../app/stylesheets/print.scss */
+#results > tbody > tr > td.result > table tr {
+  border-left: solid black 1px;
+}
+/* line 121, ../../../app/stylesheets/print.scss */
+#results > tbody > tr > td.result > table tr td {
+  border-right: solid black 1px;
+  width: 55px;
+}
+/* line 128, ../../../app/stylesheets/print.scss */
+#results > tbody > tr > td.attribute {
+  text-align: left;
+  width: 20%;
+}
+/* line 132, ../../../app/stylesheets/print.scss */
+#results > tbody > tr > td.score {
+  width: 10%;
+}
+/* line 135, ../../../app/stylesheets/print.scss */
+#results > tbody > tr > td.total {
+  width: 10%;
+}
+/* line 139, ../../../app/stylesheets/print.scss */
+#results > tbody > tr.parent_category {
+  border-top: solid black 1px;
+  border-bottom: solid black 1px;
+}
+/* line 142, ../../../app/stylesheets/print.scss */
+#results > tbody > tr.parent_category > .result_container {
+  display: none;
+}
+/* line 146, ../../../app/stylesheets/print.scss */
+#results > tbody > tr.child_category {
+  border-right: solid black 1px;
+}
+/* line 147, ../../../app/stylesheets/print.scss */
+#results > tbody > tr.child_category td.attribute {
+  padding-left: 2em;
+}
+/* line 152, ../../../app/stylesheets/print.scss */
+#results > tbody > tr span.question_number {
+  padding: 0 .1em;
+  color: grey;
+  font-size: .8em;
+}
+
+/* GROWTH PLAN */
+/* line 164, ../../../app/stylesheets/print.scss */
+ul#goals li.goal, ul#completed_goals li.goal {
+  padding-bottom: 20px;
+  border-bottom: solid black 1px;
+}
+/* line 167, ../../../app/stylesheets/print.scss */
+ul#goals li.goal:first-of-type, ul#completed_goals li.goal:first-of-type {
+  border-top: solid black 1px;
+}
+/* line 170, ../../../app/stylesheets/print.scss */
+ul#goals li.goal > .checkbox, ul#completed_goals li.goal > .checkbox {
+  float: left;
+  line-height: 2.6em;
+}
+/* line 174, ../../../app/stylesheets/print.scss */
+ul#goals li.goal > .description, ul#completed_goals li.goal > .description {
+  font-size: 1em;
+  font-weight: bold;
+}
+/* line 178, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .description a, ul#completed_goals li.goal .description a {
+  text-decoration: none;
+  color: black;
+  line-height: 2.6em;
+}
+/* line 183, ../../../app/stylesheets/print.scss */
+ul#goals li.goal > .category, ul#goals li.goal > .target, ul#completed_goals li.goal > .category, ul#completed_goals li.goal > .target {
+  margin-top: 10px;
+}
+/* line 186, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .reward, ul#completed_goals li.goal .reward {
+  float: left;
+  width: 116px;
+  margin: 0 10px;
+  text-align: center;
+}
+/* line 191, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .reward img, ul#completed_goals li.goal .reward img {
+  height: 100px;
+  width: 100px;
+  padding: .1em;
+  margin: .5em;
+  border: solid 1px black;
+  background-color: white;
+}
+/* line 199, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .reward a, ul#completed_goals li.goal .reward a {
+  font-size: .7em;
+}
+/* line 203, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .target, ul#completed_goals li.goal .target {
+  float: right;
+}
+/* line 205, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .target a, ul#completed_goals li.goal .target a {
+  text-decoration: none;
+  color: grey;
+  font-style: italic;
+  margin-right: .5em;
+  line-height: 1.4em;
+}
+/* line 213, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .category, ul#completed_goals li.goal .category {
+  float: right;
+  color: grey;
+}
+/* line 216, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .category:before, ul#completed_goals li.goal .category:before {
+  content: "  |  ";
+}
+/* line 219, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .category a, ul#completed_goals li.goal .category a {
+  text-decoration: none;
+  color: grey;
+  font-style: italic;
+  line-height: 1.4em;
+}
+/* line 226, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .actions, ul#completed_goals li.goal .actions {
+  clear: both;
+  text-align: right;
+}
+/* line 230, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .checkbox, ul#completed_goals li.goal .checkbox {
+  display: inline;
+}
+/* line 232, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .checkbox form, ul#completed_goals li.goal .checkbox form {
+  display: inline;
+}
+/* line 236, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .add_step, ul#completed_goals li.goal .add_step {
+  margin-left: 8em;
+}
+/* line 239, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .steps, ul#completed_goals li.goal .steps {
+  min-height: 90px;
+  margin-left: 136px;
+}
+/* line 242, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .steps ul, ul#completed_goals li.goal .steps ul {
+  margin-bottom: 1em;
+}
+/* line 244, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .steps ul li.step, ul#completed_goals li.goal .steps ul li.step {
+  padding: 10px;
+  margin-bottom: 1em;
+}
+/* line 247, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .steps ul li.step.late, ul#completed_goals li.goal .steps ul li.step.late {
+  background-color: #F0A8A8;
+  border: solid #900 1px;
+}
+/* line 251, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .steps ul li.step.edit, ul#completed_goals li.goal .steps ul li.step.edit {
+  display: none;
+}
+/* line 255, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .steps ul li.step .checkbox input, ul#completed_goals li.goal .steps ul li.step .checkbox input {
+  display: inline;
+  position: relative;
+  top: -2px;
+}
+/* line 261, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .steps ul li.step .step_details, ul#completed_goals li.goal .steps ul li.step .step_details {
+  font-size: .9em;
+  margin-left: 3em;
+  color: grey;
+  clear: none;
+}
+/* line 267, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .steps ul li.step > .description, ul#completed_goals li.goal .steps ul li.step > .description {
+  font-size: 1em;
+  display: inline;
+  width: auto;
+}
+/* line 271, ../../../app/stylesheets/print.scss */
+ul#goals li.goal .steps ul li.step > .description a, ul#completed_goals li.goal .steps ul li.step > .description a {
+  text-decoration: none;
+  color: black;
+}
+
+/* line 282, ../../../app/stylesheets/print.scss */
+li.step {
+  margin-bottom: 1em;
+}
+/* line 284, ../../../app/stylesheets/print.scss */
+li.step .checkbox {
+  display: inline;
+}
+/* line 286, ../../../app/stylesheets/print.scss */
+li.step .checkbox form {
+  display: inline;
+}
+/* line 289, ../../../app/stylesheets/print.scss */
+li.step .checkbox input {
+  display: inline;
+  position: relative;
+  top: -2px;
+}
+/* line 295, ../../../app/stylesheets/print.scss */
+li.step .step_details {
+  font-size: .9em;
+  margin-left: 3em;
+  color: grey;
+}
+/* line 300, ../../../app/stylesheets/print.scss */
+li.step .step_actions {
+  float: right;
+  line-height: 2.2em;
+}
+/* line 304, ../../../app/stylesheets/print.scss */
+li.step > .description {
+  font-size: 1em;
+  display: inline;
+  width: auto;
+}
+/* line 308, ../../../app/stylesheets/print.scss */
+li.step > .description a {
+  text-decoration: none;
+  color: black;
+}
+
+/* line 315, ../../../app/stylesheets/print.scss */
+#completed {
+  page-break-before: always;
+}

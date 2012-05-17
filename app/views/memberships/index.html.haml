@@ -1,0 +1,11 @@
+%h2
+  =@group.name + " Group"
+%table
+  %thead
+    %th First Name
+    %th Last Name
+    %th Email
+    %th Role
+    %th Actions
+  = render :partial => 'membership', :collection => @memberships
+= link_to 'Add Member', new_group_membership_path(@group)

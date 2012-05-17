@@ -1,0 +1,8 @@
+%h2 New Category
+-semantic_form_for [@assessment, @category] do |f|
+  -f.inputs do
+    = f.input :name
+    = f.input :description
+    = f.input :parent, :collection => @parents
+  =f.buttons
+  =link_to 'Cancel', assessment_path(@assessment)

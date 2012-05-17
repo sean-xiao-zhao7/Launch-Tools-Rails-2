@@ -1,0 +1,168 @@
+= javascript_include_tag 'fixedfloat', 'highcharts'
+%script
+  = @script
+-# TODO: Take out all "true or" statements in all if statements.
+-height = "360px"
+-width = "450px"
+#table_of_contents
+  %h3 Table of Contents
+  %ol.navigation
+    %li= link_to "Intro", "#intro"
+    %li= link_to "Basic", "#basic"
+    %li= link_to "Advanced", "#advanced"
+    %li= link_to "Growth Plan", "#growth_plan"
+-#
+  Legend:
+  Leadership: all
+  TeamWork: all
+  Spiritual Gifts:
+    Basic - self & feedback, high gifts only
+    Advanced - Only one section with self and feedback stacked
+#container
+  - if true or @assessment.analysis.ShowIntro
+    #intro.panel
+      %h2 Intro
+      -# @assessment.analysis.IntroText
+
+  - if true or @assessment.analysis.ShowBasicText
+    #basic.panel
+      %h2 Basic
+      -# @assessment.analysis.BasicText
+
+      - if true or @assessment.analysis.ShowBasic_SelfText
+        #self
+          %h3 Self
+          -# @assessment.analysis.Basic_SelfText
+          -# Bar chart: all sub-categories low to high
+          %div{ :id=>"tb1", :style=>" width: "+width+"; height: "+height+";"}
+          -# Pie Chart: Parent Categories vs. Parent categories
+          %div{ :id=>"tb3", :style=>" width: "+width+"; height: "+height+";"}
+      - if true or @assessment.analysis.ShowBasic_FeedbackText
+        #feedback
+          %h3 Feedback
+          -# @assessment.analysis.Basic_FeedbackText
+          -# Bar Chart: all sub-categories low to high
+          %div{ :id=>"tb2", :style=>" width: "+width+"; height: "+height+";"}
+          -# Pie Chart: Parent Categories vs. Parent categories
+          %div{ :id=>"tb4", :style=>" width: "+width+"; height: "+height+";"}
+
+  - if true or @assessment.analysis.ShowAdvancedText
+    #advanced.panel
+      %h2 Advanced
+      -# @assessment.analysis.AdvancedText
+      -# Stacked Bar Chart: Self & Feedback scores stacked for all sub-categories
+      %div{ :id=>"tb5", :style=>" width: "+width+"; height: "+height+";"}
+      - if true or @assessment.analysis.ShowAdvanced_SimilarText
+        -#
+          SFB = Self vs. Feedback
+          EBS = Encouraging Blind spots (Feedback scores are higher)
+          PBS = Painful Blind spots (Feedback scored are lower)
+        #SFB_Similar
+          %h3 Self vs. Feedback - Similar
+          -# @assessment.analysis.Advanced_SimilarText
+          -# Bar Chart: Similar Categories side by side
+          %div{ :id=>"tb6", :style=>" width: "+width+"; height: "+height+";"}
+
+      - if true or @assessment.analysis.ShowAdvanced_EBSText
+        #SFB_EBS
+          %h3 Encouraging Blind Spots
+          -# Bar Chart: Feedback > Self Categories side by side
+          %div{ :id=>"tb7", :style=>" width: "+width+"; height: "+height+";"}
+          -# @assessment.analysis.Advanced_EBSText
+
+      - if true or @assessment.analysis.ShowAdvanced_PBSText
+        #SFB_PBS
+          %h3 Painful Blind Spots
+          -# Bar Chart: Self > Feedback Categories side by side
+          %div{ :id=>"tb8", :style=>" width: "+width+"; height: "+height+";"}
+          -# @assessment.analysis.Advanced_PBSText
+
+  - if true or @assessment.analysis.ShowGrowthPlanText
+    #growth_plan.panel
+      %h2 Growth Plan
+      -# Tie into growth plan
+      -# @assessment.analysis.GrowthPlanText
+
+-#
+  %h1 Intro
+  %p This text will be replaced with a custom intro explaining how to use this page.
+  %br
+
+  %h1 Basic:
+  %h2 self
+
+  %table
+    %thead
+      %th Category
+      %th Breakdown
+      %th Sum/Total
+      %th Points
+    - @table.each_with_index do |row,y|
+      %tr{ :class => cycle('odd', 'even') }
+        - if row[1] == 0
+          %td
+            %b
+              = row[0].name
+        -else
+          %td
+            = " - "
+            =row[0].name
+        %td
+          -row[2].each_with_index do |aq,x|
+            -#<span id="#{aq[1]}" class="tooltip">#{aq[0]}</span>
+            %span{ :id => "ans_#{x}_#{y}", :class => "tooltip"}= aq[0]
+            %span{ :id=>"data_ans_#{x}_#{y}", :style=>"display:none;"}=aq[1]
+            -#span{ :id => "data_ans_#{x}_#{y}", style="display:none"}=aq[1]
+            -if !(row[2].length == x+1)
+              = " | "
+        %td
+          - if !(row[3]==0 and row[4]==0)
+            =row[3]
+            ="/"
+            =row[4]
+        %td
+          =row[5]
+
+  %p
+    range:
+    =@r
+
+  %br
+  %h3
+    ="-highest:"
+    =@h
+
+  %p
+    high range:
+    =@hr
+
+  %table
+    %thead
+      %th High Category
+    -@ch.each do |c|
+      %tr{ :class => cycle('odd', 'even') }
+        %td
+          =c.name
+
+
+  %br
+  %h3
+    ="-lowest:"
+    =@l
+
+  %p
+    low range:
+    =@lr
+
+  %table
+    %thead
+      %th Low Category
+    -@cl.each do |c|
+      %tr{ :class => cycle('odd', 'even') }
+        %td
+          =c.name
+
+  %h2 fb
+  %h3 -high
+  %h3 -low
+  %h1 Advanced

@@ -1,0 +1,4 @@
+%p Permanently delete this Assessment?
+- form_for [assessment, assessment_take], :html => { :method => 'delete' } do |f|
+  = submit_tag "Yes"
+  = submit_tag "Cancel", :name => "cancel", :class => "no_ajax"

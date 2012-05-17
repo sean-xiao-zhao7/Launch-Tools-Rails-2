@@ -1,0 +1,41 @@
+- unless @assessment_tokens.empty?
+  %h1 Assessment Tokens
+  %table
+    %th Assessment
+    %th Description
+    %th Actions
+
+- unless @invitations.empty?
+  %h1 Group Invitations
+  %table
+    %thead
+      %th Group Name
+      %th Description
+      %th Actions
+    = render :partial => 'group_invitation', :collection => @invitations
+    
+//- unless @assessments.empty?
+//  #buy_assessment
+//    %h3 Start New Assessment
+//    %ol= render :partial => 'assessment', :collection => @assessments
+
+#assessment_takes
+  %h1 Your Assessments
+  %ol
+    - if current_user.parent_assessment_takes.empty?
+      = render :partial => 'no_assessments'
+    - else
+      = render :partial => 'assessment_takes/assessment_take', :collection => current_user.parent_assessment_takes
+    = link_to "Purchase an Assessment", assessment_assessment_takes_url(0), :class => "major"
+    = link_to 'Create a Group', new_group_path, :class => "major"
+- unless @steps.empty?
+  #steps
+    %h1 Your Next 5 Steps in the Growth Plan
+    %ul= render :partial => 'steps/step', :collection => @steps
+    
+//#contacts
+//  %h3 Your Contacts
+//  %ol= render :partial => "contacts/contact", :collection => @contacts
+//  = link_to "Add a Contact", new_contact_path, :class => 'ajax'
+
+

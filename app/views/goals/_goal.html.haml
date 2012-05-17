@@ -1,0 +1,31 @@
+%li.goal{ :id => "goal_#{goal.id}"}
+  .category
+    - if goal.has_target?           
+      = render :partial => 'category', :locals => { :goal => goal }
+  .target
+    - if goal.has_target?
+      = render :partial => 'target', :locals => { :goal => goal }
+    - else      
+      = render :partial => 'edit_target', :locals => { :goal => goal }
+  .description= render :partial => 'description', :locals => { :goal => goal }
+  = render :partial => "reward", :locals => { :goal => goal }
+  .steps{ :id => "goal_#{goal.id}_steps"}
+    %ul{ :class => "current_steps" }
+      = render :partial => 'steps/step', :collection => goal.current_steps, :locals => { :goal => goal}
+    %ul{ :class => "completed_steps" }
+      = render :partial => 'steps/step', :collection => goal.completed_steps, :locals => { :goal => goal}
+    %ul
+      %li.step{ :id => "new_step_#{goal.id}", :class => "new_step" }      
+  .actions
+    = link_to "add step", new_goal_step_path(goal), :class => "ajax major popup"
+    = link_to "move", "#", :class => 'handle'
+    |
+    = link_to "delete", delete_goal_path(goal), :class => 'popup', :title => "Delete this Goal"
+    .complete_button
+      - if goal.all_steps_completed?
+        = render :partial => 'complete_goal', :locals => { :goal => goal }
+    .reactivate_button
+      - if goal.completed
+        = render :partial => 'complete_goal', :locals => { :goal => goal }
+      
+        

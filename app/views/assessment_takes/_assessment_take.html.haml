@@ -1,0 +1,19 @@
+%li{ :id => "assessment_take_#{assessment_take.id}"}
+  .actions
+    -# TODO: Commented out for Gabe - Take out comment for production.
+    = link_to ".", {:controller => "assessment_takes", :action => "results", :id => assessment_take}, :title => "View the results of this Assessment"
+    -if assessment_take.completed?
+      = link_to "View Results", {:controller => "assessment_takes", :action => "results", :id => assessment_take}, :title => "View the results of this Assessment"
+      |
+    -else
+      - view_action = assessment_take.started? ? "Continue" : "Start"
+      = link_to view_action, edit_assessment_assessment_take_path(:assessment_id => assessment_take.assessment, :id => assessment_take), :title => "Start/Continue this Assessment"
+      |
+    = link_to "Add Feedback Person", atake_path(:controller => "assessment_takes", :action => "new_feedback_member", :assessment_id => assessment_take.assessment ,:id => assessment_take), :class => "popup"
+    |
+    = link_to "Delete", delete_assessment_assessment_take_path(:assessment_id => assessment_take.assessment, :id => assessment_take), :class => "popup"
+  .progress= assessment_take.progress
+  .title
+    %h2= assessment_take.assessment.title
+  %fieldset.feedback 
+    %ol= render :partial => 'assessment_takes/feedback_take', :collection => assessment_take.feedback_takes   

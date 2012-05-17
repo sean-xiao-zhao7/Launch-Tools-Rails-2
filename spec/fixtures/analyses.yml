@@ -1,0 +1,43 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  assessment_id: 1
+  ShowIntro: false
+  IntroText: MyText
+  ShowBasicText: false
+  BasicText: MyText
+  ShowBasic_SelfText: false
+  Basic_SelfText: MyText
+  ShowBasic_FeedbackText: false
+  Basic_FeedbackText: MyText
+  Show_AdvancedText: false
+  AdvancedText: MyText
+  ShowAdvanced_SimilarText: false
+  Advanced_SimilarText: MyText
+  ShowAdvanced_EBSText: false
+  Advanced_EBSText: MyText
+  ShowAdvanced_PBS: false
+  Advanced_PBS: MyText
+  ShowGrowthPlanText: false
+  GrowthPlanText: MyText
+
+two:
+  assessment_id: 1
+  ShowIntro: false
+  IntroText: MyText
+  ShowBasicText: false
+  BasicText: MyText
+  ShowBasic_SelfText: false
+  Basic_SelfText: MyText
+  ShowBasic_FeedbackText: false
+  Basic_FeedbackText: MyText
+  Show_AdvancedText: false
+  AdvancedText: MyText
+  ShowAdvanced_SimilarText: false
+  Advanced_SimilarText: MyText
+  ShowAdvanced_EBSText: false
+  Advanced_EBSText: MyText
+  ShowAdvanced_PBS: false
+  Advanced_PBS: MyText
+  ShowGrowthPlanText: false
+  GrowthPlanText: MyText

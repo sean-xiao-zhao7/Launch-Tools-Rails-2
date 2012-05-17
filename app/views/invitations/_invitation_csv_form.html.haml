@@ -1,0 +1,3 @@
+- form_for :csv, :url => csv_import_group_invitations_path(@group), :html => { :multipart => true } do |f|
+  = file_field_tag 'file'
+  = f.submit 'Import'

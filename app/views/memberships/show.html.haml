@@ -1,0 +1,9 @@
+%h2
+  =@group.name
+  Group Member
+%p
+  =@membership.user.first_name
+  =@membership.user.last_name
+  =@membership.user.email
+
+=link_to 'Back', group_members_path(@group)

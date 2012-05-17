@@ -1,0 +1,11 @@
+- semantic_form_for [@group,@invitation], :html => { :class => "ajax" }  do |f|
+  - f.inputs do
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :email
+    = f.input :role, :prompt => true
+  - f.buttons do
+    - if @invitation.new_record?
+      = f.commit_button 'Add to Queue'
+    - else
+      = f.commit_button 'Update'            

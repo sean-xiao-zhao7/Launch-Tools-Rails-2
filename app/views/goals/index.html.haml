@@ -1,0 +1,25 @@
+%h1 Your Growth Plan
+-# "I can do everything through him who gives me strength" Philippians 4:13
+#goals_instruction
+- if @current_goals == [] && @completed_goals == []
+  Welcome to Your Growth Plan! To get started, please click on the link below.
+- elsif @current_goals == [] && @completed_goals != []
+  %h2 You have no goals in progress.
+- unless @current_goals.empty?
+  %h3 Goals - In Progress
+%ul#goals    
+  = render :partial => "goal", :collection => @current_goals
+#completed
+  - unless @completed_goals.empty?
+    %h3 Goals - Completed
+%ul#completed_goals    
+  = render :partial => "goal", :collection => @completed_goals
+= link_to "Create A Goal", new_goal_path(), :title => 'Create a Goal', :class => "ajax major popup"
+
+:javascript
+  $('a.checkin').fancybox({
+    'titleShow': false,
+    'scrolling': 'yes',
+    'hideOnOverlayClick': false,
+    'centerOnScroll': true    
+  });

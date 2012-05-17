@@ -1,0 +1,61 @@
+%h2 Welcome to Edit User Page
+= [[link_to 'View User Profile', "#", :id => 'view_user'], " | ", [link_to 'Email User', "#", :id => 'email_user'], " | ", [link_to 'Delete User', "#", :id => 'delete_user']]
+-# After change the order of the fields, you must match it with the array in the controller, action index, in the respond_to block.
+= jqgrid("Registered Users", "users_table", "/users",
+  [{ :field => "last_name", :label => "lastname", :width => 180 },
+  { :field => "first_name", :label => "firstname", :width => 180  },
+  { :field => "gender", :label => "gender", :width => 70  },
+  { :field => "birth_date", :label => "birthday", :width => 100  },
+  { :field => "country", :label => "country", :width => 90  },
+  { :field => "email", :label => "email", :width => 200  },
+  { :field => "verified", :label => "verified", :width => 75  },
+  { :field => "role", :label => "role", :width => 50  }],
+  { :width => 932 })  
+= link_to 'Create new User', new_user_path
+
+:css
+  body table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    width: auto;
+  }
+   
+:javascript
+  var current_user_id = "#{current_user.id}";
+    
+  $("#view_user").click( function(){
+    action("users", null);
+  });
+  $("#email_user").click( function(){
+    action("users/user_email", null);
+  });
+  $("#delete_user").click( function(){    
+    action("users", "delete");
+  });    
+  function action(url, type) {
+    if (id = $("#users_table").getGridParam("selrow")) {
+      if (type == "delete" && current_user_id == id ) {
+        alert("You may not delete yourself.");
+      } else if ( type == "delete" ) {
+        if ( confirm('Are you sure you want to delete this user?' ) ) {
+          $.ajax({
+            type: 'delete',
+            url: "/users/" + id,
+            success: function(){
+               $("#users_table").delRowData(id); // visual change 
+            }
+          });
+        }
+        return false; 
+      } else {
+        window.location.replace("/" + url + "/" + id); // Redirects For the viewing and e-mailing user
+      }
+    } else {
+      alert("Please select a user.");
+    }
+  }

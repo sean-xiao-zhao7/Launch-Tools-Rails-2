@@ -1,0 +1,14 @@
+%h2
+  =@group.name
+  Group
+%p
+  Group Description:
+  =@group.description
+
+%p
+  Group Image:
+  - image = image_tag @group.picture.url
+  = link_to image, { :controller => :groups, :action => :edit, :id => @group, :field => "reward" }, :class => "ajax", :title => "Upload a picture for your group"
+  
+
+=link_to 'Back to Groups Listing', groups_path()

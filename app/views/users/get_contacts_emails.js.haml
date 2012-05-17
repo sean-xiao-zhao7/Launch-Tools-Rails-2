@@ -1,0 +1,4 @@
+- data = []
+- @contacts.each do |c|
+  - data << {:label => "#{h(c.email)}", :value => "#{h(c.email)}"}
+= data.to_json

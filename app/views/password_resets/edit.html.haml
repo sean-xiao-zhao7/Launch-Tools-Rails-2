@@ -1,0 +1,14 @@
+%h2 Update your Password
+-form_tag password_reset_path, :method => :put do 
+  %table
+    %tr
+      %td.label= label_tag "Password:"
+      %td= password_field_tag :password
+    %tr
+      %td.label= label_tag "Password Confirmation:"
+      %td= password_field_tag :password_confirmation
+    %tr
+      %td/
+      %td
+        = submit_tag "Update Password"
+        = link_to "Cancel", root_path

@@ -1,0 +1,8 @@
+%tr{:id => "invitation_#{invitation.id}", :class => cycle("odd", "even")}
+  %td= invitation.first_name
+  %td= invitation.last_name
+  %td= invitation.email
+  %td= invitation.role.name
+  %td= invitation.status
+  %td
+    = link_to 'Remove', group_invitation_path(@group, invitation), :method => :delete, :class => "remove_invitation"

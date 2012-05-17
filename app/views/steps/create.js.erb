@@ -1,0 +1,17 @@
+$.fancybox.close();
+
+$("#goal_<%= @step.goal_id %>_steps .current_steps").append('<%= escape_javascript(render :partial => "step", :locals => { :goal => @goal }) %>');
+
+$('a.checkin').fancybox({
+  'titleShow': false,
+  'scrolling': 'yes',
+  'hideOnOverlayClick': false,
+  'centerOnScroll': true    
+});
+
+$('a.popup').fancybox({
+  'scrolling': 'no',
+  'titleShow': false,
+  'hideOnOverlayClick': false,
+  'centerOnScroll': true
+});

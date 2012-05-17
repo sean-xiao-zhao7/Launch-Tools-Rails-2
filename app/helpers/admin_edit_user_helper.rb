@@ -1,0 +1,2 @@
+module AdminEditUserHelper
+end

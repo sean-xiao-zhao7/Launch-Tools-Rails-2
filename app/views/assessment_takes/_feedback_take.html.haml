@@ -1,0 +1,8 @@
+%li{ :id => "feedback_take_#{feedback_take.id}"}
+  .actions
+    - unless feedback_take.completed?
+      =link_to "Resend Link", atake_path(:action => "fb_resend_email", :assessment_id => feedback_take.assessment, :id => feedback_take), :confirm => 'ARE YOU SURE??'
+      |
+      = link_to "Remove", delete_assessment_assessment_take_path(:assessment_id => feedback_take.assessment, :id => feedback_take), :title => "This will actually delete your contact's Assessment and cannot be undone!", :class => "ajax popup"
+  .progress= feedback_take.progress
+  .title= feedback_take.contact.title

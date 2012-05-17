@@ -1,0 +1,30 @@
+#profile
+  %h2
+    -if @user==current_user
+      Your Profile
+    -else
+      User Profile
+  -semantic_form_for @user, :url => user_path(:id => params[:id]) do |f|
+    - f.inputs do
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :birth_date, :as => :string, :include_blank => false, :input_html => {:value => @user.birth_date ? @user.birth_date.strftime("%B %d, %Y") : ""} 
+      = f.input :gender, :as => :radio, :label => "Gender", :collection => [['Male', 'male'], ['Female', 'female']], :value => @user.gender
+      = f.input :country, :input_html => {:value => @user.country ? @user.country : ""}
+      = f.input :verified, :as => :hidden, :value => true
+      -if @user == current_user
+        = f.input :active_membership, :collection => @user.memberships
+      -if permitted_to? :index, :users
+        -if @user != current_user
+          = f.input :role, :as => :select, :collection => ['Admin', 'User'], :include_blank => false
+          = f.input :password, :required => true
+          = f.input :password_confirmation, :required => true
+          = f.input :email, :value => @user.email
+          = f.input :active_membership, :collection => @memberships
+    - f.buttons do
+      = f.commit_button
+    -if @user == current_user
+      = link_to "Change My Email or Password", "/users/password/1"
+      = link_to "Cancel", :back
+    -if @user != current_user
+      = link_to "Cancel", users_path

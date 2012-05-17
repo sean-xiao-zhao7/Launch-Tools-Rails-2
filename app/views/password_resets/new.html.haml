@@ -1,0 +1,11 @@
+-form_tag password_resets_path, :class => "reset_password" do 
+  %fieldset.inputs
+    %ol
+      %li
+        = label_tag "Email: "
+        = text_field_tag "email"
+  %fieldset.commit
+    %ol
+      %li
+        = link_to "Cancel", root_path
+        = submit_tag "Reset Password"

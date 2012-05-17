@@ -1,0 +1,6 @@
+%h1= @assessment.title + " Assessment"
+-# TODO: Needs to be taken from at_instruction, not assessment.description
+.content= (@assessment.instruction.nil?)? '' : @assessment.instruction.main
+-# TODO: Take out create assessment after testing, or show it to admins only.
+= button_to "Create Assessment", assessment_assessment_takes_path(@assessment), :disable_with => 'Creating Assessment'
+= button_to "Purchase", purchase_assessment_transactions_path(:assessment_id => @assessment), :disable_with => 'Creating Transaction'

@@ -1,0 +1,7 @@
+%tr{ :class => cycle("even", "odd") }
+  %td= category.name
+  %td= (category.parent_id)? Category.find(category.parent_id).name : ''
+  %td
+    = link_to 'Edit', edit_assessment_category_path(@assessment, category)
+    |
+    = link_to 'Destroy', assessment_category_path(@assessment, category), :confirm => 'Are you sure?', :method => :delete

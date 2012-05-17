@@ -1,0 +1,71 @@
+- semantic_form_for [@goal, @step], :html => { :class => "ajax"} do |f|
+  - f.inputs :id => "step_#{@step.id}_description", :class => "description" do
+    = f.input :description, :input_html => { :autofocus => "autofocus"}
+  - if @step.once_type?  
+    - f.inputs "Due", :id => "step_#{@step.id}_due", :class => "due" do
+      = f.input :reminder_checkin_date, :input_html => { :class => "datepicker"}, :label => "Due Date", :as => :string
+  - else
+    - f.inputs "Until", :id => "step_#{@step.id}_until", :class => "due" do
+      = f.input :until_date, :input_html => { :class => "datepicker"}, :label => "Until Date", :as => :string
+  - unless @step.id.nil?
+    - f.inputs "Accountability", :id => "step_#{@step.id}_accountability", :class => "accountability" do
+      - if @step.accountability.nil? 
+        = link_to "Add Accountable Person", add_accountability_goal_step_path(@goal, @step), :class => "popup" 
+      - else  
+        = link_to "Accountable to " + @step.accountability, add_accountability_goal_step_path(@goal, @step), :class => "popup"
+  - f.buttons do
+    = f.commit_button
+    or
+    = link_to "Cancel", "#goal_#{@goal.id}", :class => "step_edit_cancel"
+
+:javascript
+  $(function() {
+    $(".step_edit_cancel").click(function() {      
+      $("#new_step_#{@goal.id}:visible").slideToggle().html("");
+      $("#step_#{@step.id}_edit:visible").slideToggle().html("");
+      $("#step_#{@step.id}:hidden").slideToggle();
+    });
+  });
+  
+  $('a.popup').fancybox({
+    'scrolling': 'no',
+    'titleShow': false,
+    'hideOnOverlayClick': false,
+    'centerOnScroll': true
+  });
+  
+  /*
+  $.fn.display_correct_div = function(val) {
+    $(this).find('.schedule_option_once').hide();
+    $(this).find('.schedule_option_weekly').hide();
+    $(this).find('.schedule_option_monthly').hide();
+    $(this).find('.schedule_option_' + val.toLowerCase()).show();
+  }
+  if ('#{@step.once_type?}'== 'true') {
+      $('#step_#{@step.id}_edit').display_correct_div('Once');
+      $('#new_step_#{@goal.id}').display_correct_div('Once');
+    } 
+    else if ('#{@step.weekly_type?}'=='true') {
+      $('#step_#{@step.id}_edit').display_correct_div('Weekly');
+      $('#new_step_#{@goal.id}').display_correct_div('Weekly');
+    } 
+    else if ('#{@step.monthly_type?}'=='true') {
+      $('#step_#{@step.id}_edit').display_correct_div('Weekly');
+      $('#new_step_#{@goal.id}').display_correct_div('Weekly');
+    }
+    $('#step_#{@step.id}_edit').find('.reminder_type').change(function() {
+      $('#step_#{@step.id}_edit').display_correct_div($(this).attr('value')); 
+    })           
+    $('#new_step_#{@goal.id}').find('.reminder_type').change(function() {  
+      $('#new_step_#{@goal.id}').display_correct_div($(this).attr('value'));
+    })
+  */
+-#
+  - f.inputs "Schedule", :id => "step_#{@step.id}_schedule", :class => "schedule" do
+    = f.input :reminder_type, :as => :radio, :collection => ['Once', 'Weekly', 'Monthly'], :input_html => { :class => "reminder_type"}
+    .schedule_option_once
+      = f.input :reminder_checkin_date, :input_html => { :class => "datepicker"}, :label => "Due Date", :as => :string
+    .schedule_option_weekly
+      = f.input :reminder_times_target_weekly, :label => "Weekly Target"
+    .schedule_option_monthly
+      = f.input :reminder_times_target_monthly, :label => "Monthly Target"

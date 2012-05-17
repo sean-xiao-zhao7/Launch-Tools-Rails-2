@@ -1,0 +1,26 @@
+<h2>Editing Result</h2>
+
+<% form_for [@assessment, @result] do |f| %>
+  <%= f.error_messages %>
+  <table class="center">
+    <tr>
+      <td class="label"><%= f.label :result_type %></td>
+      <td>
+        <%= collection_select(:result,
+                              :result_type,
+                              ResultType.all ,
+                              :id,
+                              :name,
+                              {:prompt => true}) %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <%= f.submit 'Update' %>
+        <%= link_to 'Cancel', assessment_path(@assessment) %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+

@@ -1,0 +1,21 @@
+development:
+  paypal_email: launch_1279747051_biz@gmail.com
+  paypal_cert_id: XXQ87DH7SQQP2
+  paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
+  assessments_cost: 5
+
+test:
+  paypal_email: test@example.com
+  paypal_cert_id: 123456789
+  paypal_url: testpaypalurl
+  assessments_cost: 5
+
+production:
+#TODO: Update to production information before release
+  paypal_email: launch_1279747051_biz@gmail.com
+  paypal_cert_id: XXQ87DH7SQQP2
+  paypal_url: "https://www.sandbox.paypal.com/cgi-bin/webscr"
+  assessments_cost: 5
+#  paypal_email: launch@youthunlimitedgta.com
+#  paypal_cert_id: KLHZSK326HEDS
+#  paypal_url: "https://www.paypal.com/cgi-bin/webscr"

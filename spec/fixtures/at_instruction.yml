@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  assessment_id: 1
+  intro: MyText
+  pre_take: MyText
+  fb_welcome: MyText
+  fb_save: MyText
+  fb_submit: MyText
+
+two:
+  assessment_id: 1
+  intro: MyText
+  pre_take: MyText
+  fb_welcome: MyText
+  fb_save: MyText
+  fb_submit: MyText

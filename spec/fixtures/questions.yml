@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  question_type_id:
+  question:
+  assessment_id:
+  category_id:
+  parent_id: 1
+
+two:
+  question_type_id:
+  question:
+  assessment_id:
+  category_id:
+  parent_id: 1

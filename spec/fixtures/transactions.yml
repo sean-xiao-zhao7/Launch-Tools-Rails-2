@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  group_id: 1
+  gift_email: MyString
+  points: 1
+  cost: 1
+  token: MyString
+  transaction_id: MyString
+  params: MyText
+  status: MyString
+
+two:
+  user_id: 1
+  group_id: 1
+  gift_email: MyString
+  points: 1
+  cost: 1
+  token: MyString
+  transaction_id: MyString
+  params: MyText
+  status: MyString

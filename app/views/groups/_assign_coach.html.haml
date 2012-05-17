@@ -1,0 +1,8 @@
+.form
+  - form_for :assignment, :url => assign_coach_group_membership_path(@group), :html => { :class => "ajax" }  do |f|
+    -# We want the membership id for the student, but the user id for the coach.
+    =@group.decode('Coach') + ": "
+    = select_tag 'coach_id', options_for_select(@group.coaches.collect{ |c| [c.user.name, c.user.id] })
+    =@group.decode('Student') + ": "
+    = select_tag 'student_membership_id', options_for_select(@group.students.collect{ |s| [s.user.name, s.id] })
+    = submit_tag 'Assign'

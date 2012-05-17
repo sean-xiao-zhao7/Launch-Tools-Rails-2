@@ -1,0 +1,7 @@
+%tr{ :id => "contact_#{contact.id}", :class => cycle('even', 'odd')}
+  %td= contact.title
+  %td= contact.email
+  %td
+    = link_to "Edit", edit_contact_path(contact), :title => "Click to Edit this Contact", :class => "popup"
+    |
+    = link_to "Delete", delete_contact_path(contact), :title => "Delete this Contact", :class => "popup"

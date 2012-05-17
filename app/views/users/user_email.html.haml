@@ -1,0 +1,19 @@
+%h2 Send Email
+= form_tag :action => 'send_user_email'
+%table
+  %tr
+    You are Sending an Email to
+    =@user.title
+  %tr
+    %td.label Email Subject:
+    %td= text_field("form", "subject")
+  %tr
+    %td.label Email Text:
+    %td
+      = text_area("form", "text")
+      = hidden_field("form", "email", :value => @user.email)
+  %tr
+    %td
+    %td
+      = submit_tag "Send Email"
+      = link_to "Cancel", :back

@@ -1,0 +1,7 @@
+.reward
+  - image = image_tag goal.reward.url
+  - if goal.has_reward?
+    = link_to image, goal.reward.url, :class => "popup", :title => "This is your reward for when you complete the goal"
+  - else
+    = link_to image, { :controller => :goals, :action => :edit, :id => goal, :field => "reward" }, :class => "popup", :title => "This is your reward for when you complete the goal"
+  = link_to "upload reward", { :controller => :goals, :action => :edit, :id => goal, :field => "reward" }, :class => "popup", :title => "This is your reward for when you complete the goal"

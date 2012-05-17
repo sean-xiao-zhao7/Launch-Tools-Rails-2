@@ -1,0 +1,9 @@
+<p>
+  <b>Category:</b>
+  <%=h @category.name %>
+  <br/>
+  <%=h @category.description %>
+</p>
+
+<%= link_to 'Edit', edit_assessment_category_path(@assessment) %> |
+<%= link_to 'Back', assessment_path(@assessment) %>

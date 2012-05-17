@@ -1,0 +1,3 @@
+%p Delete this Step? Cannot be undone!
+- form_for [@goal, @step], :html => { :method => 'delete', :class => "ajax" } do |f|
+  = submit_tag "Yes"

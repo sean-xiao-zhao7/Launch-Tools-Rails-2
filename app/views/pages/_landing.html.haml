@@ -1,0 +1,28 @@
+= javascript_include_tag 'tourslide', "jquery.localscroll-1.2.7-min", "jquery.serialScroll-1.2.2-min", "jquery.scrollTo-1.4.2-min"
+#tour
+  #scroll
+    #scroll_container
+      #assessments.panel
+        %h1 Assessments
+        %p This is the body text for the assessment part
+      #feedback.panel
+        %h1 Feedback
+        %p This is the body text for the feedback part
+      #analysis.panel
+        %h1 Analysis
+        %p This is the body text for the analysis part
+      #growth_plan.panel
+        %h1 Growth Plan
+        %p This is the body text for the growth plan part
+  #tabs
+    %ul.navigation
+      %li= link_to "Assessments", "#assessments"
+      %li= link_to "Feedback", "#feedback"
+      %li= link_to "Analysis", "#analysis"
+      %li= link_to "Growth Plan", "#growth_plan"
+#feed
+  %h2 Twitter/Facebook
+#testimonial
+  %h2 Testimonials
+  
+  

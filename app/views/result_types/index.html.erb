@@ -1,0 +1,22 @@
+<h2>Listing Result Types</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Controls</th>
+  </tr>
+
+<% @result_types.each do |rtype| %>
+  <tr>
+    <td><%=h rtype.name %></td>
+    <td><%=h (rtype.description)? rtype.description : '' %></td>
+    <td><%= link_to 'Edit', edit_result_type_path(rtype) %></td>
+    <td><%= link_to 'Destroy', rtype, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Result Type', new_result_type_path %>

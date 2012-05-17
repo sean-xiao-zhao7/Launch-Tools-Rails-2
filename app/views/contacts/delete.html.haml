@@ -1,0 +1,4 @@
+%p Delete this Contact? (Cannot be undone!)
+- semantic_form_for @contact, :html => { :method => 'delete' } do |f|
+  - f.buttons do
+    = f.commit_button "Yes"

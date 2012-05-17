@@ -1,0 +1,35 @@
+<% unless params[:step][:completed] %>
+	$('#step_<%=@step.id%>_edit').slideToggle().remove();
+	
+	$('#step_<%=@step.id%>').replaceWith('<%= escape_javascript(render(:partial => "step", :locals => { :goal => @goal, :step => @step })) %>');
+	$('#step_<%=@step.id%>').show();
+	
+	$.fancybox.close(); // this is for the checkins
+<% end %>	
+
+<% if params[:step][:completed] == "0" %> // unfinished step, remove the complete goal button
+	$("#goal_<%= @goal.id %> .complete_button").html('');
+	$('#step_<%=@step.id%>').replaceWith('<%= escape_javascript(render(:partial => "step", :locals => { :goal => @goal, :step => @step })) %>');	
+<% end %>
+
+<% if params[:step][:completed] && @late %> // set the background color for late steps.
+		$("#step_<%= @step.id %>").attr("class", "late step");
+<% end %>
+
+<% if params[:step][:completed] == "1" %> // completed, remove the red
+		$("#step_<%= @step.id %>").attr("class", "step");	
+<% end %>
+
+$('a.checkin').fancybox({
+  'titleShow': false,
+  'scrolling': 'yes',
+  'hideOnOverlayClick': false,
+  'centerOnScroll': true    
+});
+
+$('a.popup').fancybox({
+  'scrolling': 'no',
+  'titleShow': false,
+  'hideOnOverlayClick': false,
+  'centerOnScroll': true
+});

@@ -1,0 +1,21 @@
+%h1 Create a new Goal
+%div{ :id => "create_goal_lizard" }
+  - semantic_form_for @goal, :html => {:class => "ajax"} do |f|  
+    .target
+      %h3 1. Select a target and a category:
+      - f.inputs do
+        = f.input :target, :collection => @targets, :include_blank => false
+      .category{ :style => "display:none" }
+    .description{ :style => "display:none" }
+      - f.inputs do
+        = f.input :description, :label => "name"
+      - f.buttons do
+        = f.commit_button "Save"
+   
+:javascript
+  $('#create_goal_lizard .target select').change(function() {
+    $.ajax({
+      url: '#{switch_target_goals_path()}',
+      data: "target=" + $('#goal_target').val()
+    });
+  });

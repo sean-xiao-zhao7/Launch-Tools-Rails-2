@@ -1,0 +1,23 @@
+%h2 Assessment Analysis
+- semantic_form_for @analysis, :url => { :controller =>"analyses", :action => "update", :assessment_id => @assessment.id } do |f|
+  - f.inputs do
+    = f.input :ShowIntro, :label => "Show Intro"
+    = f.input :IntroText, :label => "Intro Text"
+    = f.input :ShowBasicText, :label => "Show Basic Analysis Text"
+    = f.input :BasicText, :label => "Basic Analysis Text"
+    = f.input :ShowBasic_SelfText, :label => "Show Basic Self Analysis Text"
+    = f.input :Basic_SelfText, :label => "Basic Self Analysis Text"
+    = f.input :ShowBasic_FeedbackText, :label => "Show Basic Feedback Analysis Text"
+    = f.input :Basic_FeedbackText, :label => "Basic Feedback Analysis Text"
+    = f.input :ShowAdvancedText, :label => "Show Advanced Analysis Text"
+    = f.input :AdvancedText, :label => "Advanced Analysis Text"
+    = f.input :ShowAdvanced_SimilarText, :label => "Show Similar Categories Text"
+    = f.input :Advanced_SimilarText, :label => "Similar Categories Text"
+    = f.input :ShowAdvanced_EBSText, :label => "Show Encouraging Blind Spots Text"
+    = f.input :Advanced_EBSText, :label => "Encouraging Blind Spots Text"
+    = f.input :ShowAdvanced_PBSText, :label => "Show Painful Blind Spots Text"
+    = f.input :Advanced_PBSText, :label => "Painful Blind Spots Text"
+    = f.input :ShowGrowthPlanText, :label => "Show Growth Plan Text"
+    = f.input :GrowthPlanText, :label => "Growth Plan Text"
+  = f.buttons
+  = link_to 'Back to Assessment', assessment_path(@assessment)

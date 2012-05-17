@@ -1,0 +1,44 @@
+%h1 Sign Up
+- semantic_form_for @user, :url => account_path, :html => { :class => 'validate' } do |f|
+  -f.inputs "Personal Details" do
+    = f.input :first_name, :input_html => { :autofocus => "" }
+    = f.input :last_name
+    = f.input :birth_date, :as => :string, :include_blank => false, :input_html => { :placeholder => "YYYY-MM-DD"}
+    = f.input :country, :include_blank => "Choose Your Country", :include_blank => false, :priority_countries => ['CA', 'US']
+    = f.input :gender, :as => :radio, :label => "Gender", :collection => [['Male', 'male'], ['Female', 'female']]
+  -f.inputs "User Details" do
+    = f.input :email
+    = f.input :password
+    = f.input :password_confirmation, :label => "Confirm Password"
+
+    -# Invitations
+    -# TODO: Display needs to be fixed
+    - if @invitation
+      %h3 Accept Group Invitations
+      = hidden_field_tag :invitation_token, params[:invitation_token]
+      - @group_invitations.each do |invitation|
+        -#
+          - if @invitation == invitation
+            = check_box_tag "group_ids[]", invitation.group.id, true, :disabled => true
+          - else
+            = check_box_tag "group_ids[]", invitation.group.id, true
+        = check_box_tag "invitation_ids[]", invitation.id, true
+        = invitation.group.name
+        %br
+    
+    -if permitted_to? :index, :users
+      = f.input :role, :as => :select, :collection => ['Admin', 'User'], :include_blank => false
+      = f.input :verified
+  -f.buttons do
+    -if current_user.nil?
+      = f.commit_button "Sign Up"
+    -else
+      = f.commit_button "Create the Account"
+      = link_to "Cancel", root_path
+
+-#
+  .demo
+
+    %p
+      Date:
+      %input#datepicker{ :type => "text"}

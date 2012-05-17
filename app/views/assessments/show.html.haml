@@ -1,0 +1,78 @@
+%h2= "Managing #{@assessment.title} Assessment"
+= link_to 'Edit this Assessment', edit_assessment_path(@assessment)
+|
+= link_to 'Return to the List of Assessments', assessments_path
+<HR NOSHADE SIZE=1 WIDTH=100%>
+Description:
+%p= @assessment.description
+
+%h3 Instructions
+= link_to 'Edit Instructions', edit_at_instructions_path(:id => @assessment.id)
+
+%br
+%br
+%br
+
+%h3 Questions
+= link_to 'Create a new question', new_assessment_question_path(@assessment)
+%table
+  %thead
+    %th Question
+    %th Value
+    %th Category
+    %th Type
+    %th Options
+    %th Actions
+    %th Question Number
+    %th 
+  %tbody{ :id=>"questions"}
+    = render :partial => 'question', :collection => @questions
+%br
+%br
+%br
+
+%h3 Categories
+= link_to 'Create a new category', new_assessment_category_path(@assessment)
+%table
+  %thead
+    %th Categories
+    %th Parent
+    %th Actions
+  = render :partial => 'category', :collection => @categories
+
+%br
+%br
+%br
+
+-# Commented out as we are no longer adding results to assessments
+  %h3 Results
+  = link_to 'Add a new result', new_assessment_result_path(@assessment)
+  %table
+    %thead
+      %th Result Type
+      %th Actions
+    = render :partial => 'result', :collection => @results
+
+%h3 Analysis
+-#= link_to 'Edit Analysis', edit_assessment_analysis_path(:assessment_id => @assessment.id)
+
+:javascript
+  $('#questions').sortable({
+    axis: 'y',
+    handle: '.handle',
+    cursor: 'move',
+    update: function(){
+      $.ajax({
+        type: 'post',
+        data: $('#questions').sortable('serialize') + '&id=#{@assessment.id}',
+        dataType: 'script',
+        complete: function(request){
+          $('#questions').effect('highlight');
+        },
+        url: '/assessments/re_order_questions'})
+    }
+  });
+  
+
+
+

@@ -1,0 +1,12 @@
+<% unless @categories.nil? %> 
+	$('#create_goal_lizard .category').html("<%= escape_javascript(render :partial => "category_input", :locals => { :categories => @categories } ) %>").show();
+	  
+ $('#create_goal_lizard .category select').change(function(){
+   $(".description").show();
+			$.fancybox.resize();
+ });
+
+<% else %>
+ $('#create_goal_lizard .category').hide();
+	$('#create_goal_lizard .description').hide();
+<% end %>

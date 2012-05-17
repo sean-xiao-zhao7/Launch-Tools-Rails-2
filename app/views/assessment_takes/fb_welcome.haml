@@ -1,0 +1,5 @@
+%h2
+  =@assessment_take.assessment.title + " Feedback Assessment"
+.content
+  =@assessment_take.assessment.instruction.fb_welcome if @assessment_take.assessment.instruction.fb_welcome
+=button_to "Take Assessment", fbtake_path(@assessment_take.token) 

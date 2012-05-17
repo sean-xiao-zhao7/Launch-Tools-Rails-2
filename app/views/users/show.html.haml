@@ -1,0 +1,56 @@
+%h2
+  -if @user==current_user
+    My Profile
+  -if @user != current_user
+    User Profile
+%table
+  %tr
+    %td.label Name:
+    %td= @user.first_name + " " + @user.last_name
+  %tr
+    %td.label Email:
+    %td= @user.email
+  %tr
+    %td.label Birth Date:
+    %td= @user.birth_date.strftime("%B %d, %Y")
+  %tr
+    %td.label Gender:
+    %td= @user.gender
+  %tr
+    %td.label Country:
+    %td= @user.country
+        
+%h2
+  -if @user==current_user
+    My Groups
+  -if @user != current_user
+    User's Memberships
+
+- if @user.active_membership
+  %center
+    ="You are currently in the " + @user.active_membership.group.name + " Group Site."
+    %br
+    %br
+    =link_to 'Switch to the LAUNCH-Tools Main Site', deactivate_group_membership_path(@user.active_membership.group, @user.active_membership)
+  %br
+  
+%table
+  %thead
+    %th Group
+    %th Role
+    %th Actions
+  = render :partial => 'membership', :collection => current_user.memberships
+
+%br
+
+=link_to 'Edit Profile',  edit_user_path(:id => @user.id)
+-if @user != current_user
+  |
+  = link_to "Go Back", :back
+-if @user==current_user
+  |
+  = link_to "Change My Email or Password", "/users/password/1"
+|  
+=link_to 'View Contacts',  contacts_path()
+|
+=link_to 'View Transaction History', transactions_path

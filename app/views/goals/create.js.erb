@@ -1,0 +1,11 @@
+// Append the new goal to goals list
+$('ul#goals').append('<%= escape_javascript(render :partial => 'goal', :locals => { :goal => @goal }) %>')
+$.fancybox.close();
+$('#goals_instruction').hide();
+
+$('a.popup').fancybox({
+  'scrolling': 'no',
+  'titleShow': false,
+  'hideOnOverlayClick': false,
+  'centerOnScroll': true
+});

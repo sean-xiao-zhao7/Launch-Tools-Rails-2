@@ -1,0 +1,6 @@
+%h2 New Result
+-semantic_form_for [@assessment, @result] do |f|
+  -f.inputs do
+    = f.input :result_type
+  = f.buttons
+  = link_to 'Cancel', assessment_path(@assessment)

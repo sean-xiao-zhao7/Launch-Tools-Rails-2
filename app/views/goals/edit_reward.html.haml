@@ -1,0 +1,25 @@
+%h3 Upload your own picture
+%h4 - Must be an image.
+%h4 - File size must be less than 500 KB.
+-semantic_form_for @goal, :html => { :multipart => true } do |f|
+  - f.inputs do
+    = f.file_field :reward
+  - f.buttons do
+    = f.commit_button "Upload"
+
+:javascript
+  $.fancybox.resize();
+  
+  $("a.popup").fancybox({
+    'scrolling': 'no',
+    'hideOnOverlayClick': false,
+    'centerOnScroll': true    
+  });
+    
+-#
+  %h1 OR
+  %h3 Pick one from the following: 
+  %ul
+    = render :partial => "image", :collection => @default_images, :locals => { :goal => @goal }
+    
+      

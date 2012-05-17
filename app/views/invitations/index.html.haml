@@ -1,0 +1,14 @@
+%h2 Invitations Status
+
+%table
+  %thead
+    %th First Name
+    %th Last Name
+    %th Email
+    %th Role
+    %th Status
+    %th Actions
+  %tbody
+    = render :partial => 'invitation', :collection => @invitations
+
+= link_to 'Invite Members', new_group_invitation_path(@group)

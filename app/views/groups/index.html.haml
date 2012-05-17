@@ -1,0 +1,8 @@
+%h2 Groups
+%table
+  %thead
+    %th Group Name
+    %th Description
+    %th Actions
+  = render :partial => 'group', :collection => @groups
+= link_to 'Add Group', new_group_path()

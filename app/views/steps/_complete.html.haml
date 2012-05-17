@@ -1,0 +1,7 @@
+.growth_plan
+  %p Congratulations on your hard work!
+  %p Would you like to complete this Step now?
+  - form_for [goal, step] do |f|
+    = f.hidden_field :completed, :value => true   
+    = submit_tag "Yes, finish this step now"
+    = submit_tag "No, practice this step some more", :name => "cancel", :class => "no_ajax"

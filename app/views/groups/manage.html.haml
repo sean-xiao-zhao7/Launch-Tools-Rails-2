@@ -1,0 +1,96 @@
+:css
+  body table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    width: auto;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    text-align: baseline;
+  }
+
+%h2= @group.name + " Group"
+
+-# TODO: Restrict View & Edit to Owner Only
+%h3 Group Details
+= link_to 'View Details', group_path(@group)
+|
+= link_to 'Customize Group', edit_group_path(@group)
+|
+-# TODO: Users have to contact support to delete a group.
+= link_to 'Destroy', group_path(@group), :confirm => 'Are you sure?', :method => :delete
+%br
+%br
+
+- if @group.activated
+  %h3
+    Assessments Remaining :
+    = @group.tokens
+  = link_to 'Purchase Assessments', purchase_tokens_group_path(@group)
+- else
+  %h3 Please purchase assessments to activate your group
+  = link_to 'Activate Group', purchase_tokens_group_path(@group)
+%br
+%br
+
+-# Group has to be activated before the below actions can be accessed.
+- if @group.activated
+
+  %h3 Members
+  = jqgrid("Group Members", "members_table", "/groups/#{@group.id}/members_list",
+    [{ :field => "users.last_name", :label => "Last Name" },
+    { :field => "users.first_name", :label => "First Name" },
+    { :field => "users.email", :label => "Email" },
+    { :field => "users.gender", :label => "Gender" },
+    { :field => "role_id", :label => "Role" },
+    { :field => "users.birth_date", :label => "Birth date" }],
+    { :width => 900 })
+  = link_to 'Edit Membership', "#", :id => 'edit_membership'
+  |
+  = link_to 'Delete Membership', "#", :id => 'delete_membership'
+  |
+  = link_to 'Invite Members', new_group_invitation_path(@group)
+  |
+  = link_to 'Invitations Status', group_invitations_path(@group)
+  %br
+  %br
+
+  %h3= (@group.decode('Student').pluralize) + "being coached by the selected" + (@group.decode('Coach'))
+
+  %h3= 'Assign a ' + @group.decode('Coach')
+  = render :partial => 'assign_coach'
+
+
+:javascript
+  $("#edit_membership").click( function(){
+    action("edit_membership");
+  });
+  $("#delete_membership").click( function(){    
+    action("delete_membership");
+  });
+
+  function action(type) {
+    if (id = $("#members_table").getGridParam("selrow")) {
+      if (type == "edit_membership") {
+        path = "#{edit_group_membership_path(@group.id,0)}";
+      } else if (type == "delete_membership") {
+        path = "#{group_membership_path(@group.id,0)}";
+        if (confirm('Are you sure you want to remove this user?')) {
+          $.ajax({
+            type: 'delete',
+            url: path,
+            dataType: 'json',
+            success: function(){
+               $("#members_table").delRowData(id); // visual change
+            }
+          });
+          return false;
+        }
+      }
+      window.location.replace(path.replace('0',id)); // Redirects For the other two
+    } else {
+      alert("Please select a user.");
+    }
+  }

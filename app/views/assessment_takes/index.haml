@@ -1,0 +1,35 @@
+-# TODO: Remove Started Assessments from this page - we don't want duplicate functionality.
+-#%h1 Started Assessments
+-#%table
+-#  %thead
+-#    %th Type
+-#    %th Date
+-#    %th Controls
+-#  %tbody
+-#    - @assessment_takes.each do |assessment_take|
+-#      - if assessment_take.parent_id.nil?
+-#        %tr{ :class => cycle('odd', 'even') }
+-#          %td=h assessment_take.assessment.title
+-#          %td=h assessment_take.updated_at.to_date.readable_inspect
+-#          %td
+-#            = link_to 'Start/Continue',edit_assessment_assessment_take_path(:assessment_id=>assessment_take.assessment_id,:id=>assessment_take.id)
+-#            |
+-#            = link_to 'Summary', atake_path(:action => "summary",:assessment_id => assessment_take.assessment, :id => assessment_take)
+-#            |
+-#            = link_to 'Add a Feedback Member', atake_path(:action => "new_feedback_member", :assessment_id => assessment_take.assessment.id ,:id => assessment_take.id)
+-#            |
+-#            = link_to 'Results', :controller => "assessment_takes",:action => "results",:id => assessment_take
+-#            |            |
+-#            = link_to 'Delete', assessment_assessment_take_path(:assessment_id => assessment_take.assessment.id, :id => assessment_take.id),:confirm => 'Are you sure?',:method => :delete
+
+%h1 Purchase an Assessment
+%ol.assessments
+  -@assessments.each do |assessment|
+    %li
+      %h2= assessment.title + " Assessment"
+      %p= (assessment.instruction.nil?)? '' : assessment.instruction.intro
+      = button_to "Purchase", purchase_assessment_transactions_path(:assessment_id => assessment), :disable_with => 'Creating Transaction'
+      or 
+      = link_to "learn more...", new_assessment_assessment_take_path(assessment)
+      -# TODO: For testing only - remove for launch
+      = button_to "Create Assessment", assessment_assessment_takes_path(assessment), :disable_with => 'Creating Assessment'

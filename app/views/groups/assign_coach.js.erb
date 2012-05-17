@@ -1,0 +1,3 @@
+$('tbody').append('<%= escape_javascript(render :partial => 'unacceoted_coaches', :locals => { :unsent_invitation => @invitation }) %>');
+$('#unsent_invitation_<%= @invitation.id %>').fadeIn();
+$('form.ajax')[0].reset();

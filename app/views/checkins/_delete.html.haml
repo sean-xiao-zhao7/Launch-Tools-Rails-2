@@ -1,0 +1,5 @@
+.growth_plan
+  %p Delete this Checkin?
+  - form_for [@goal, @step, @checkin], :html => { :method => 'delete' } do |f|
+    = submit_tag "Yes"
+    = submit_tag "Cancel", :name => "cancel", :class => "no_ajax"

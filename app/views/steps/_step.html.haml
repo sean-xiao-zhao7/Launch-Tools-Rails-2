@@ -1,0 +1,28 @@
+-classes = "late" if step.late?
+%li.step{ :id => "step_#{step.id}", :class => classes, :title => "#{step.days}" }
+  .checkbox= render :partial => 'steps/check_box', :locals => { :step => step, :goal => step.goal }
+  .description= render :partial => 'steps/description', :locals => { :step => step, :goal => step.goal }, :class => "popup"
+  .step_actions
+    - if step.accountability.nil?
+      = link_to "Add Accountable Person", add_accountability_goal_step_path(step.goal, step), :class => "popup"
+    - else
+      = link_to "Change Accountable Person", add_accountability_goal_step_path(step.goal, step), :class => "popup"
+    = " | "
+    = link_to "delete", delete_goal_step_path(step.goal, step), :class => 'popup', :title => "Delete this Step"
+  .step_details
+    %ul
+      %li
+        = "#{step.span}" 
+      %li
+        = "#{step.target}" unless step.once_type? || step.reminder_times_target.nil?
+      %li
+        = "#{step.days}"
+      - unless step.accountability.nil?
+        %li
+          Accountable to
+          = link_to "<style>a.accountability { text-decoration:none; } a.accountability:hover{ text-decoration: underline }</style><b>#{step.accountability}</b>", add_accountability_goal_step_path(step.goal, step), :class => "popup accountability"
+  .checkins
+    = link_to "Check-in Now!", goal_step_checkins_path(step.goal, step), :title => "Checkin Now!", :class => "checkin major"
+    - unless step.checkins.empty?
+      = link_to "Review Progress", review_progress_goal_step_path(step.goal, step), :title => "View your progress for this step!", :class => "checkin major"
+%li.step.edit{ :id => "step_#{step.id}_edit" }

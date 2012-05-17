@@ -1,0 +1,12 @@
+$(".steps .step").show();
+$(".steps .edit").hide(); // edit one step at a time (NO pun intended)
+$(".new_step").slideToggle().html("") // does allow add a new step and update at the same time
+$("#step_<%= @step.id %>_edit").html('<%= escape_javascript(render(:partial => "form")) %>').hide().slideToggle();
+$("#step_<%= @step.id %>").hide();
+
+$('input.datepicker').datepicker({
+  minDate: 0,
+  changeYear: true,
+  changeMonth: true,
+  dateFormat: 'MM d, yy'
+});

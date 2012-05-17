@@ -1,0 +1,21 @@
+%h2 Invite New Members
+
+%center
+  %h3 Invite Queue:
+%table
+  %thead
+    %th First Name
+    %th Last Name
+    %th Email
+    %th Role
+    %th Actions
+  %tbody
+    = render :partial => 'unsent_invitation', :collection => @invitations
+
+= render :partial => 'invitation_form'
+
+%h3 Upload CSV File of Member List
+
+= render :partial => 'invitation_csv_form'
+
+= link_to 'Send Invitations', email_group_invitations_path(:group_id => @group), :confirm => 'Are you sure? This will send an email to each person inviting them to be part of your group.'

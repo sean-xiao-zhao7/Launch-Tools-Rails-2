@@ -1,0 +1,7 @@
+- semantic_form_for [@transaction], :url => purchase_tokens_transactions_url do |f|
+  - f.inputs do
+    = f.input :group_id, :as => :hidden
+    = f.input :tokens, :label => "Number of Assessments: "
+    -#= f.input :tokens, :as => :select, :label => "Quantity", :collection => [5,10,25,50], :prompt => "Please Select"
+  - f.buttons do
+    = f.commit_button "Purchase"

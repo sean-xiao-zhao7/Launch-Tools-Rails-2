@@ -1,0 +1,13 @@
+%h2
+  Editing
+  = @assessment.title
+-semantic_form_for(@assessment) do |f|
+  - f.inputs do
+    = f.input :title
+    = f.input :description
+    = f.input :pagination
+    = f.input :completed
+  =f.buttons
+  = link_to 'Cancel', @assessment
+  |
+  = link_to 'View List of Assessments', assessments_path

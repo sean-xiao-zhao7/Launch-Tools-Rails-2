@@ -1,0 +1,17 @@
+$("#new_step_<%=@goal.id%>").html('<%= escape_javascript(render(:partial => "form")) %>').hide().slideToggle();
+$(".steps .step").show();
+$(".steps .edit").hide().html("");
+
+$('input.datepicker').datepicker({
+  minDate: 0,
+  changeMonth: true,
+  changeYear: true,
+  dateFormat: 'MM d, yy'
+});
+
+$('a.popup').fancybox({
+  'scrolling': 'no',
+  'titleShow': false,
+  'hideOnOverlayClick': false,
+  'centerOnScroll': true
+});

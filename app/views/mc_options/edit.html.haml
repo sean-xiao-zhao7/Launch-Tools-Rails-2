@@ -1,0 +1,30 @@
+%h1 Edit Option
+- semantic_form_for [@a, @q, @o] do |f|
+  - f.inputs do
+    = f.input :content, :label => 'Self Assessment Text'
+    = f.input :feedback_content, :label => 'Feedback Assessment Text'
+    = f.input :value
+    = f.input :category, :collection => @a.child_categories
+  - f.buttons do
+    = f.submit 'Update'
+= link_to "Cancel", assessment_question_mc_options_url(:a=>@a.id,:q=>@q.id, :action => "index")
+-#
+-# Backup, just in case it's needed
+  - form_for [@a,@q,@o] do |f|
+    = f.error_messages
+    %p
+      =f.label :content
+      =f.text_field :content
+      %br
+      =f.label :feedback_content
+      =f.text_field :feedback_content
+      %br
+      =f.label :value
+      =f.text_field :value
+      %br
+      = f.label :category_id
+      = collection_select(:o, :category_id, @a.categories , :id, :name, {:prompt => false})
+    %p
+      =f.submit 'Update'
+      |
+      = link_to "Cancel", assessment_question_mc_options_url(:a=>@a.id,:q=>@q.id, :action => "index")

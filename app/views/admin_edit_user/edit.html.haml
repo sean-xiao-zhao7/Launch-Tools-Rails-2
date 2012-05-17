@@ -1,0 +1,10 @@
+%h2
+  Editing
+  = @user.email
+
+-semantic_form_for(@assessment) do |f|
+  =f.inputs
+  =f.buttons
+  = link_to 'Cancel', root_path
+  |
+  = link_to 'View List of Users', "/admin_edit_user/index/"

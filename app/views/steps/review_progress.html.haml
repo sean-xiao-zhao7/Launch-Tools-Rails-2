@@ -1,0 +1,90 @@
+%h2 Progress (Target: #{@step.target})
+=link_to "List View", "#step_#{@step.id}", :id => "list_view_link"
+=" | "
+=link_to "Graph View", "#step_#{@step.id}", :id => "graph_view_link"
+%table{ :class => "list_view" }
+  %thead
+    %th Start
+    %th Until
+    %th Repeat Times
+  %tbody
+    = render :partial => "checkins/checkin_display", :collection => @step.checkins, :locals => { :step => @step }
+%div{ :class => "graph_view", :id => "step_#{@step.id}_chart", :style => "width: 500px; height: 300px; display:none" }  
+  Graph live here.
+:javascript
+ 
+  // other stuff
+  
+  $("#list_view_link").click(function(){
+    $(".list_view").show();
+    $(".graph_view").hide();
+    $.fancybox.resize();
+  });
+  
+  $("#graph_view_link").click(function(){
+    $(".graph_view").show();
+    $(".list_view").hide();
+    $.fancybox.resize();
+  });
+-#
+  /* High Charts ~ be careful with indentations ~
+    
+  chart = new Highcharts.Chart({
+    chart: {
+      renderTo: "step_#{@step.id}_chart",
+      defaultSeriesType: 'column',
+      margin: [ 50, 50, 100, 80]
+    },
+    title: {
+      text: 'Progress of Step: #{@step.description}'
+    },
+    subtitle: {
+      text: 'Type: #{@step.reminder_type}'
+    },
+    xAxis: {
+      categories: #{array_or_string_for_javascript(@step.get_checkin_dates)},
+      labels: {
+        rotation: -45,
+        align: 'right',
+        style: {
+          font: 'normal 13px Verdana, sans-serif'
+        }
+      }	
+    },
+    yAxis: {
+      min: 0,
+      max: #{@step.get_max_times + 5},
+      title: {
+        text: ''
+      }
+    },
+    legend: {
+      layout: 'vertical',
+      backgroundColor: '#FFFFFF',
+      align: 'left',
+      verticalAlign: 'top',
+      x: 40,
+      y: 40
+    },
+    tooltip: {
+      formatter: function() {
+      return '' + this.x +':\n'+ this.y +' times';
+      }
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0
+      }
+    },      
+    series: [{
+      name: 'Target',
+      data: #{@step.get_checkin_targets.to_json}									  
+      },
+      {
+      name: 'Actual',
+      data: #{@step.get_checkin_actuals.to_json}
+      }
+    ]
+  });   
+

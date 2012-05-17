@@ -1,0 +1,10 @@
+%h2 New Option
+- semantic_form_for :mc_option, @option, :url=>assessment_question_mc_options_path(@a.id,@q.id) do |f|
+  - f.inputs do
+    = f.input :content, :label => 'Self Assessment Text'
+    = f.input :feedback_content, :label => 'Feedback Assessment Text'
+    = f.input :value
+    = f.input :category, :collection => @a.child_categories
+  - f.buttons do
+    = f.submit "Create Option"
+= link_to "Cancel", assessment_question_mc_options_url(:a=>@a.id,:q=>@q.id, :action => "index")

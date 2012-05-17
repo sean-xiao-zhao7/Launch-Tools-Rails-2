@@ -1,0 +1,16 @@
+%h2 Edit Options
+%h3 
+  Question:
+  = @q.content
+
+%table
+  %thead
+    %th Option
+    %th Category
+    %th Value
+    %th Actions
+
+  = render :partial => 'mcoption', :collection => @q.McOptions
+ 
+= link_to "New Option", new_assessment_question_mc_option_path 
+= link_to "To Questions", @a

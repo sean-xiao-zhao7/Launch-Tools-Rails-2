@@ -1,0 +1,49 @@
+%div{ :id => "#new_step_#{@goal.id}" }
+  - semantic_form_for [@goal, @step], :html => { :class => "ajax" } do |f|
+    - f.inputs do
+      = f.input :description, :label => "Describe Your New Step", :required => false
+      = f.input :reminder_type, :as => :radio, :collection => ['Once', 'Repeating'], :input_html => { :class => "reminder_type"}
+      #details{ :style => "display:none" }
+        #once
+          = f.input :reminder_checkin_date, :as => :string, :input_html => { :class => "datepicker"}, :label => "Due Date"
+        #repeating
+          = f.input :start_date, :label => "Start", :as => :string, :input_html => { :class => "datepicker"}
+          = f.input :until_date, :label => "Until", :as => :string, :input_html => { :class => "datepicker"}
+          = f.input :reminder_times_target, :label => "Frequency"
+          per
+          = f.input :reminder_freq, :label => "", :as => :select, :collection => {'Week' => 1, 'Month' => 0}, :include_blank => false
+        = f.buttons
+  
+:javascript
+  $(".reminder_type").attr('checked', "");
+  $(".reminder_type").click(function(){
+    $("#details").show();
+    $.fancybox.resize();
+  });
+  $(".reminder_type").change(function(){
+    if($(this).attr('value') == "Once" ) {
+      $("#once").show();
+      $("#repeating").hide();
+      $.fancybox.resize();    
+    } else {
+      $("#once").hide();
+      $("#repeating").show();
+      $.fancybox.resize();
+    } 
+  });
+  
+  $('input.datepicker').datepicker({
+    minDate: 0,
+    changeYear: true,
+    changeMonth: true,
+    dateFormat: 'MM d, yy',
+  });
+  
+  $('#step_until_date').click(function(){
+    var date = $("#step_start_date").val();
+    $('#step_until_date').datepicker( "option", "minDate", new Date(date));
+  });
+  
+  $('#step_start_date').click(function() {
+    $('#step_until_date').val("");
+  });

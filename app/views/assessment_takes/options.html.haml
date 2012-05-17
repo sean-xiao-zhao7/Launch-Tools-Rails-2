@@ -1,0 +1,14 @@
+%table
+  %thead
+    %th Assessment
+    %th Description
+  %tbody
+    -@assessments.each do |a|
+      %tr
+        %td
+          %b
+            =a.title
+        %td
+          = (a.instruction.nil?)? '' : a.instruction.intro
+          %center
+            =button_to "Get Started", new_assessment_assessment_take_path(a), :method => :get

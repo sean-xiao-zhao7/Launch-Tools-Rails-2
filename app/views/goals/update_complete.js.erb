@@ -1,0 +1,21 @@
+<% if @goal.completed %>
+	
+	$.fancybox({
+		content: "<h1>Congratulations on finishing your goal!</h1>" +
+												"<h3>Please reward yourself with the " +  
+												'<%= link_to "reward", @goal.reward.url, :html => { :class => "popup" }%>' +
+												" you\'ve set!</h3>",
+	 'scrolling': 'no',
+		'titleShow': false,
+		'centerOnScroll': true	
+	});
+	
+	$("#goal_<%= @goal.id %> .complete_button").html("");
+	$("#goal_<%= @goal.id %> .reactivate_button").html("<%= escape_javascript(render :partial => 'complete_goal', :locals => { :goal => @goal }) %>");
+	$("#goal_<%= @goal.id %>").appendTo("#completed_goals");
+<% else %>
+	$("#goal_<%= @goal.id %> .reactivate_button").html("");
+	<% @goal.restart_steps %>
+	$("#goal_<%= @goal.id %> input").attr('checked', false);
+	$("#goal_<%= @goal.id %>").appendTo("#goals");
+<% end %>	

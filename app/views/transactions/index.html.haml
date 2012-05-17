@@ -1,0 +1,18 @@
+%h2 Transaction History
+%table
+  %thead
+    %th Date
+    %th Type
+    %th Assessment
+    %th Group
+    %th Tokens
+    %th Gift Email
+    %th Cost
+    %th Status
+  = render :partial => 'transaction', :collection => @transactions
+%center
+  = link_to 'Purchase a Group Site', new_transaction_path()
+  |
+  = link_to 'Purchase an Assessment', new_transaction_path()
+  |
+  = link_to 'Gift an Assessment', new_transaction_path()

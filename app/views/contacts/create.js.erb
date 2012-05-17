@@ -1,0 +1,3 @@
+$('#dialog').slideToggle();
+$('#contacts ol').append('<%= escape_javascript(render(:partial => "contact", :locals => { :contact => @contact })) %>');
+$('#contact_<%=@contact.id%>').hide().slideToggle();

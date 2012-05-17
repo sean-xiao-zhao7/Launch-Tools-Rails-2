@@ -1,0 +1,17 @@
+%h2 Add Feedback Person
+#add_feedback_person
+  #new_contact_form
+    %h3 Add a New Feedback Member
+    - semantic_form_for @contact, :url => { :controller =>"assessment_takes", :action => "add_feedback_member", :id => @assessment_take.id }, :html => { :class => "ajax"} do |f|
+      - f.inputs do
+        = f.input :first_name
+        = f.input :last_name
+        = f.input :email
+      =f.submit 'Add'
+  #or OR
+  - unless @possible_fb_members.empty?
+    #existing_contact_form
+      %h3 Use an Existing Contact
+      - semantic_form_for :contact, :url => { :controller =>"assessment_takes", :action => "add_feedback_member", :id => @assessment_take.id }, :html => { :class => "ajax"} do |f|
+        = select_tag 'contact[id]', options_for_select(@possible_fb_members.collect{ |c| [c.info, c.id] })
+        = f.submit 'Add'

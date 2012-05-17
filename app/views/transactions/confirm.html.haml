@@ -1,0 +1,38 @@
+%h1 Transaction Details
+
+- case @transaction.transaction_type
+  - when 'Assessment'
+
+    - paypal_tag = @transaction.paypal_encrypted(@transaction.assessment.title + ' Assessment', APP_CONFIG[:assessments_cost], paypal_return_url, paypal_notification_url(:secret => @transaction.token))
+
+    %h2= @transaction.assessment.title + ' Assessment'
+
+  - when 'Group'
+
+    - paypal_tag = @transaction.paypal_encrypted('Group Tokens', APP_CONFIG[:assessments_cost], paypal_return_url, paypal_notification_url(:secret => @transaction.token), @transaction.tokens)
+
+    %h2 Group Tokens
+    %h2
+      Group Name:
+      = @transaction.group.name
+    %h2
+      Assessment Tokens:
+      = @transaction.tokens
+
+  - when 'Gift'
+
+    - paypal_tag = @transaction.paypal_encrypted(@transaction.assessment.title + ' Assessment Gift', APP_CONFIG[:assessments_cost], APP_CONFIG[:assessments_cost], paypal_return_url, paypal_notification_url(:secret => @transaction.token))
+  
+    %h2 @transaction.assessment.title + ' Assessment Gift'
+    %h2
+      Gift Email:
+      = @transaction.gift_email
+
+%h3= 'Total Cost: ' + '$ ' + "%.2f" % @transaction.cost
+
+#paypal_form
+  -form_tag APP_CONFIG[:paypal_url] do
+    = hidden_field_tag :cmd, "_s-xclick"
+    -#= hidden_field_tag :encrypted, @transaction.paypal_encrypted(paypal_return_url, paypal_notification_url(:secret => @transaction.token))
+    = hidden_field_tag :encrypted, paypal_tag
+    %input{ :type => "image", :border => 0, :src => "https://www.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif", :name => "submit", :alt =>"PayPal - The safer, easier way to pay online!" }

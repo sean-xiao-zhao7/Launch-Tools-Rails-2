@@ -1,0 +1,9 @@
+$('#goal_<%=@goal.id%> .category').html('<%= escape_javascript(render(:partial => "edit_category", :locals => { :goal => @goal })) %>');
+$('#goal_<%=@goal.id%> .category select').focus();
+$('#goal_<%=@goal.id%> .category select').blur(function() {
+  $('#goal_<%=@goal.id%> .category').html('<%= escape_javascript(render(:partial => "category", :locals => { :goal => @goal })) %>');
+})
+
+$('select.ajax').change(function() {
+		$(this).closest('form').submit();
+});

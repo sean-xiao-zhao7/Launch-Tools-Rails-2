@@ -1,0 +1,9 @@
+(in C:/Projects/rails/LAUNCH-Tools)
+** Invoke jobs:work (first_time)
+** Invoke merb_env (first_time)
+** Execute merb_env
+** Invoke environment (first_time)
+** Execute environment
+** Execute jobs:work
+[Worker(host:Suraj-Tablet pid:5160)] RPM Monitoring DJ worker host:Suraj-Tablet pid:5160
+[Worker(host:Suraj-Tablet pid:5160)] Starting job worker

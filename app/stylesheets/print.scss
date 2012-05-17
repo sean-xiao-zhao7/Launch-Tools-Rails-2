@@ -1,0 +1,317 @@
+/* reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 12px;
+  vertical-align: baseline;
+  background: transparent;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* remember to define focus styles! */
+/*
+:focus {
+  outline: 0;
+}
+*/
+
+/* remember to highlight inserts somehow! */
+
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*END OF RESET*/
+
+
+/* WHAT NOT TO DISPLAY */
+
+#footnotes_debug, #footer, #user, #menu_outer, #admin_menu_outer, #uservoice-feedback, a.major, #table_of_contents, .step_actions, .actions, .reward a:last-of-type, .steps ul:last-of-type {
+  display: none;
+}
+
+/* HEADER */
+
+#logo {
+  width: 260px;
+  height: 60px;
+  float: right;
+  img {
+    width: 260px;
+    height: 60px;
+  }
+}
+
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1em;
+  font-weight: bold;
+  font-size: 18px;
+  clear: both;
+}
+
+h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 14px; 
+  border-bottom: solid black 1px;
+  clear: both;
+}
+
+/* RESULTS TABLE */
+
+#results {
+  border-left: solid black 1px;
+  border-right: solid black 1px;
+  border-bottom: solid black 1px;
+  width: 100%;
+  margin-bottom: 20px;
+  td {
+    padding: .5em;
+  }
+  > tbody {
+    > tr {
+      > td.result {
+        padding: 0;
+        > table {
+          margin: 0 !important;
+          tr {
+            border-left: solid black 1px;
+            td {
+              border-right: solid black 1px;
+              width: 55px;
+            }
+          }
+        }
+      }
+      > td.attribute {
+        text-align: left;
+        width: 20%;
+      }
+      > td.score {
+        width: 10%;
+      }
+      > td.total {
+        width: 10%;
+      }
+      text-align: center;
+      &.parent_category {
+        border-top: solid black 1px;
+        border-bottom: solid black 1px;
+        > .result_container {
+          display: none;
+        }
+      }
+      &.child_category {
+        td.attribute {
+          padding-left: 2em;
+        }
+        border-right: solid black 1px;
+      }
+      span.question_number {
+        padding: 0 .1em;
+        color: grey;
+        font-size: .8em;
+      }
+    }
+  }
+}
+
+/* GROWTH PLAN */
+
+ul#goals, ul#completed_goals{
+  li.goal {
+    padding-bottom: 20px;
+    border-bottom: solid black 1px;
+    &:first-of-type {
+      border-top: solid black 1px;
+    }
+    > .checkbox {
+      float: left;
+      line-height: 2.6em;
+    }
+    > .description {
+      font-size: 1em;
+      font-weight: bold;
+    }
+    .description a { 
+      text-decoration: none;
+      color: black;
+      line-height: 2.6em;
+    }         
+    > .category, > .target {
+      margin-top: 10px;
+    }
+    .reward {
+      float: left;
+      width: 116px;
+      margin: 0 10px;
+      text-align: center;
+      img {
+        height: 100px;
+        width: 100px;
+        padding: .1em;
+        margin: .5em;
+        border: solid 1px black;
+        background-color: white;
+      }
+      a {
+        font-size: .7em;
+      }
+    }
+    .target {
+      float: right;
+      a {
+        text-decoration: none;
+        color: grey;
+        font-style: italic;
+        margin-right: .5em;
+        line-height: 1.4em;
+      }
+    }
+    .category {
+      float: right;
+      color: grey;
+      &:before {
+        content: "  |  "
+      }
+      a {
+        text-decoration: none;
+        color: grey;
+        font-style: italic;
+        line-height: 1.4em;
+      }
+    }
+    .actions {
+      clear: both;
+      text-align: right;
+    }
+    .checkbox {
+      display: inline;
+      form {
+        display: inline;
+      }
+    }
+    .add_step {
+      margin-left: 8em;
+    }
+    .steps {
+      min-height: 90px;
+      margin-left: 136px;
+      ul {
+        margin-bottom: 1em;
+        li.step {
+          padding: 10px;
+          margin-bottom: 1em;
+          &.late {
+            background-color: #F0A8A8;
+            border: solid #900 1px;
+          }
+          &.edit {
+            display: none;
+          }
+          .checkbox {
+            input {
+              display: inline;
+              position: relative;
+              top: -2px;
+            }
+          }
+          .step_details {
+            font-size: .9em;
+            margin-left: 3em;
+            color: grey;
+            clear: none;
+          }
+          > .description {
+            font-size: 1em;
+            display: inline;
+            width: auto;
+            a {
+              text-decoration: none;
+              color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+li.step {
+  margin-bottom: 1em;
+  .checkbox {
+    display: inline;
+    form {
+      display: inline;
+    }
+    input {
+      display: inline;
+      position: relative;
+      top: -2px;
+    }
+  }
+  .step_details {
+    font-size: .9em;
+    margin-left: 3em;
+    color: grey;
+  }
+  .step_actions {
+    float: right;
+    line-height: 2.2em;
+  }
+  > .description {
+    font-size: 1em;
+    display: inline;
+    width: auto;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+#completed {
+  page-break-before: always;
+}

@@ -1,0 +1,11 @@
+%tr{ :class => "#{cycle("even", "odd")}" }
+  %td
+    = checkin_display.start_date.strftime("%b %d, %Y").to_s
+  %td
+    = checkin_display.until_date.strftime("%b %d, %Y").to_s  
+  %td
+    = checkin_display.reminder_times_actual
+-# Adjust to taste!
+  %td  
+    = link_to "Delete", delete_goal_step_checkin_path(step.goal, step, checkin_display)
+      

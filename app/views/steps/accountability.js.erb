@@ -1,0 +1,10 @@
+$.fancybox.close();
+$('#step_<%=@step.id%>').replaceWith('<%= escape_javascript(render(:partial => "step", :locals => { :goal => @goal, :step => @step })) %>');
+$('#step_<%=@step.id%>_edit').hide();
+//make links with popup class use the fancybox dialog
+$('a.popup').fancybox({
+  'scrolling': 'no',
+  'titleShow': false,
+  'hideOnOverlayClick': false,
+  'centerOnScroll': true
+});

@@ -1,0 +1,29 @@
+%h2 Checkins (Target: #{@step.target})
+- if @new_checkin.nil? && @checkins.empty?
+  %h3
+    - if @step.once_type?
+      The due date for this step is not today, please try again later!
+    - else
+      - if @step.start_date > Date.today
+        Checking is allowed only after the start date!
+        The start date is #{@step.start_date.strftime("%b %d, %Y")}.
+      - else    
+        You have already checked in today! You can only check in once per day.
+- else
+  - unless @checkins.empty?
+    %h3
+      Please enter the times you did the step for each of these periods:
+    - form_for [@goal, @step], :html => { :class => "ajax" } do |step_form|
+      - step_form.fields_for :checkins, @checkins do |checkin_form|
+        %table
+          %tr
+            %td= checkin_form.label :reminder_times_actual, "#{checkin_form.object.start_date.strftime('%b %d, %Y')} to #{checkin_form.object.until_date.strftime('%b %d, %Y')}"
+            %td= checkin_form.text_field :reminder_times_actual,  :html => { :class => "submitOnChange" }
+            = hidden_field_tag checkin_form.object_name + "[start_date]", checkin_form.object.start_date
+            = hidden_field_tag checkin_form.object_name + "[until_date]", checkin_form.object.until_date
+            -# You have to send anything you given to the new checkin in the controller/model prior to this point 
+      = step_form.submit "Create", :html => { :class => "ajax" }
+  -# if @new_checkin
+    %h3 If you want to make an unscheduled checkin today, enter the amount below
+    = render :partial => "new", :locals => { :checkin => @new_checkin, :step => @step, :goal => @goal }
+      

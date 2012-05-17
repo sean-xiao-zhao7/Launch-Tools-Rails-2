@@ -1,0 +1,9 @@
+%h2 Viewing All Assessments
+%table
+  %thead
+    %th Title
+    %th Description
+    %th Actions
+  = render :partial => 'assessment', :collection => @assessments
+
+= link_to 'Create a New Assessment', new_assessment_path

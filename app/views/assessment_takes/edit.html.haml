@@ -1,0 +1,24 @@
+%h1= @assessment_take.assessment.title + " Assessment"
+- form_for @assessment_take, :url => edit_assessment_assessment_take_path, :html => {:name => 'assessment_edit_form'} do |at| 
+  %ol= render :partial => 'question', :collection => @questions, :locals => { :at => at,:per_page=>@per_page,:page=>@page}
+  =at.hidden_field :page, { :value => @page }
+  .pagination
+    - if @page > 1
+      = at.submit "<<", :id => "previous_page",:disable_with => '-Saving-'
+    - else
+      = at.submit "<<", :id => "previous_page",:disabled => true
+    //- @assessment_take.number_of_pages.times do |index|
+    //  - if index+1 == @page
+    //    = at.submit @page, :disabled => true
+    //  - else
+    //    = at.submit index+1, :disable_with => '-Saving-'
+    = at.submit "Save and Exit", :id => "done", :disable_with => '-Saving-'
+    - if @page < (@assessment_take.assessment.questions.length-1)/@per_page+1
+      = at.submit ">>", :id => "next_page", :disable_with => '-Saving-'
+    - else
+      = at.submit ">>", :id => "next_page", :disabled => true
+    - if @assessment_take.percentage_completed == 100 or @page < (@assessment_take.assessment.questions.length-1)/@per_page+1
+      = at.submit "Completed", :id => "completed",:disable_with => '-Saving-'
+    -##progress_bar_outer
+    -#  = @assessment_take.progress
+    -#  #progress_bar_inner{ :style => { :width => ":#{@assessment_take.percentage_completed}%"}}

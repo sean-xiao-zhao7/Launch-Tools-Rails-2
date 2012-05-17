@@ -1,0 +1,12 @@
+%tr
+  -if user != current_user
+    %td=user.first_name
+    %td=user.last_name
+    %td=user.email
+    %td=user.verified
+    %td=user.gender
+    %td
+      -if user != current_user
+        =[[link_to 'User Profile', show_path(:id => user.id)]," | ",[link_to 'Delete', user_path(:id => user.id), :confirm => 'Are you sure?', :method => :delete], " | ", [link_to "Send Email",user_email_path(:id=>user.id)]]
+      -else          # this is not needed now that admin cannot see themselves as a user, Talk to Suraj About this
+        =[link_to 'My Profile', show_path(:id => user.id)]

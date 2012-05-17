@@ -1,0 +1,10 @@
+%h2 Login
+- semantic_form_for @user_session, :url => user_session_path do |f|
+  - f.inputs do
+    = f.input :email, :required => false, :input_html => { :autofocus => "autofocus" }
+    = f.input :password, :required => false
+    = f.input :remember_me, :label => "keep me logged in", :as => :boolean, :required => false
+  - f.buttons do
+    = f.commit_button "Login"
+    or
+    = link_to 'forgot your password?', new_password_reset_path, :class => "popup"

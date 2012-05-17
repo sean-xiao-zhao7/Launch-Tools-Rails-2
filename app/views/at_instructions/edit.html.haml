@@ -1,0 +1,12 @@
+%h2 Assessment Instructions
+- semantic_form_for @at_instruction, :url => { :controller =>"at_instructions", :action => "update", :id => @assessment.id } do |f|
+  - f.inputs do
+    = f.input :intro, :label => "Intro"
+    = f.input :main, :label => "Main Instructions"
+    = f.input :pre_take, :label => "Assessment Take Instructions"
+    = f.input :fb_welcome, :label => "Feedback User Welcome Instructions"
+    = f.input :fb_save, :label => "Feedback User Save Instructions"
+    = f.input :fb_submit, :label => "Feedback User Submit Instructions"
+  - f.buttons do
+    = f.commit_button "Save"
+  = link_to 'Cancel', assessment_path(@assessment)

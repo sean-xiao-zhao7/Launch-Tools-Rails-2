@@ -1,0 +1,11 @@
+<p>
+  <b>Result Type:</b>
+  <%=h @result_type.name %>
+  <br />
+  <b>Description:</b>
+  <%=h (@result_type.description)? @result_type.description : '' %>
+
+</p>
+
+<%= link_to 'Edit', edit_result_type_path(@assessment) %> |
+<%= link_to 'Back', result_types_path(@assessment) %>

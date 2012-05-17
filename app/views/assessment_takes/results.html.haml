@@ -1,0 +1,87 @@
+= javascript_include_tag 'tooltip.jquery', 'tooltips'
+%h2 Self Assessment Results
+%table#results
+  -reset_cycle("points")
+  -@tb_p.each_with_index do |row,y|
+    - if row[1]==0 #if its a parent...?
+      - row_class = "parent_category"
+      -reset_cycle("table")
+    - else
+      - row_class = cycle('even','odd',:name => "table") + " child_category"
+    %tr{:class=> row_class}
+      %td{ :id => "cs_#{y}", :class => "tooltip attribute"}
+        - if row[1] == 0
+          = row[0].name
+        -else
+          = row[0].name
+        %div{ :class=>"hover_result", :id=>"data_cs_#{y}", :style=>"display:none;"}
+          %h3= row[0].name
+          %p= row[0].description
+      %td.result
+        - if row_class == "parent_category"
+          Results
+        %table
+          %tr{:class => "result_container"}
+            -row[2].each_with_index do |aq,x|
+              %td{ :id => "rs_#{x}_#{y}", :class => "tooltip result"}
+                %span.question_number= "#{aq[1]}. "
+                %span.question_result= "#{aq[3][0]}"
+              %span{ :id=>"data_rs_#{x}_#{y}", :style=>"display:none;"}
+                %span.question_number= "Q#."
+                <br/>
+                =aq.to_s
+                
+                <br/>
+                = "#{aq[1]}. #{aq[2]}"
+      %td.total
+        - if row_class == "parent_category"
+          Total
+        -else
+          - if !row[3][0].nil? and !row[3][1].nil?
+            = row[3][0].to_s + "/" + row[3][1].to_s
+      %td.score
+        - if row_class == "parent_category"
+          Score
+        - else
+          = row[4]
+
+%h2 Feedback Assessment Results
+%table#results
+  -reset_cycle("points")
+  -@tb_fb.each_with_index do |row,y|
+    - if row[0].has_child?
+      - row_class = "parent_category"
+      -reset_cycle("table")
+    - else
+      - row_class = cycle('even','odd',:name => "table") + " child_category"
+    %tr{:class => row_class}
+      %td{ :id => "cs_#{y}", :class => "tooltip attribute"}
+        - if row[1] == 0
+          = row[0].name              
+        -else
+          = row[0].name
+        %div{ :class=>"hover_result", :id=>"data_cs_#{y}", :style=>"display:none;"}
+          %h3= row[0].name
+          %p= row[0].description
+      %td.result
+        - if row_class == "parent_category"
+          Results
+        %table
+          %tr{:class => "result_container"}
+            -row[2].each_with_index do |aq,x|
+              %td{ :id => "rs_#{x}_#{y}", :class => "tooltip"}
+                %span.question_number= "#{aq[1]}. "
+                %span.question_result= "#{aq[3][0]}"
+              %span{ :id=>"data_rs_#{x}_#{y}", :style=>"display:none;"}
+                = "#{aq[1]}. #{aq[2]}"
+      %td.total
+      %td.score
+        - if row_class == "parent_category"
+          Score
+        - else
+          -if !row[4].nil?
+            = sprintf("%.1f", row[4]).to_s
+
+=link_to "Analysis", assessment_assessment_take_analysis_path(@assessment_take.assessment, @assessment_take), :class => "major"
+=link_to "Get Feedback", atake_path(:action => "new_feedback_member", :assessment_id => @assessment_take.assessment.id ,:id => @assessment_take.id), :class => "major"
+

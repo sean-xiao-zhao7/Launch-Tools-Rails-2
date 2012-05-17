@@ -1,0 +1,8 @@
+%tr{ :class => cycle("odd", "even")}
+  %td= membership.group.name
+  %td= membership.role.name
+  %td
+    - if !(@user.active_membership == membership)
+      = link_to 'Go to Group Site', activate_group_membership_path(membership.group, membership)
+    |
+    = link_to 'Leave', group_membership_path(membership.group, membership), :confirm => 'Are you sure?', :method => :delete

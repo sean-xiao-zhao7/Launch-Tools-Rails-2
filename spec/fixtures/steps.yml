@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyString
+  date_due: 2010-06-10 12:36:24
+  accountable_to: MyString
+
+two:
+  description: MyString
+  date_due: 2010-06-10 12:36:24
+  accountable_to: MyString

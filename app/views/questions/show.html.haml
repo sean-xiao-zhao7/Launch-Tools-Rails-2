@@ -1,0 +1,16 @@
+%p
+  %b Self Text:
+  =h @question.content
+  %br
+  %b Feedback Text:
+  =h @question.feedback_content
+  %br
+  %b Category:
+  =h (@question.category)? @question.category.name : 'None'
+  %br
+  %b Type:
+  =h (@question.question_type)? @question.question_type.name : 'None'
+
+= link_to 'Edit', edit_assessment_question_path(@assessment)
+|
+= link_to 'Back', assessment_path(@assessment)

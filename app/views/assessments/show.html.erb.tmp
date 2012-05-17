@@ -1,0 +1,111 @@
+<h2>Managing "<%=h @assessment.title %>"</h2>
+
+<%= link_to 'Edit this Assessment', edit_assessment_path(@assessment) %> |
+<%= link_to 'Return to the List of Assessments', assessments_path %>
+
+<p> <%=h @assessment.description %></p>
+
+<h3>Questions</h3>
+
+<%= link_to 'Create a new question', new_assessment_question_path(@assessment) %>
+
+<table>
+  <thead>
+    <th>Question</th>
+    <th>Category/Options</th>
+    <th>Type</th>
+    <th>Actions</th>
+  </thead>
+
+  
+  <% @questions.each do |q| %>
+    <tr class="<%= cycle("even", "odd") %>">
+
+      <% if q.question_type == QuestionType.find(:first, :conditions => ["name = ?",'Rate']) %>
+				<td><%=h q.content %></td>    
+				<td><%=h (q.category)? q.category.name : 'None' %></td>
+				<td><%=h (q.question_type)? q.question_type.name : 'None' %></td>
+				<td><%= link_to 'Edit', q_edit_url( :id => @assessment, :q => q, :controller => "questions", :action => "edit") %> |
+				<%= link_to 'Destroy', assessment_question_path(@assessment, q), :confirm => 'Remove Question?', :method => :delete %></td>
+
+      <% elsif q.question_type == QuestionType.find(:first, :conditions => ["name = ?",'Choose-many']) %>
+				<td><%=h q.content %></td>
+				<td>Number of options:<%= q.McOptions.length %></td>
+				<td><%=h (q.question_type)? q.question_type.name : 'None' %></td>
+				<td><%= link_to "Options", assessment_question_mc_options_url(@assessment.id,q.id)%> |
+					<%= link_to 'Edit', q_edit_url( :id => @assessment, :q => q, :controller => "questions", :action => "edit") %> |
+					<%= link_to 'Destroy', assessment_question_path(@assessment, q), :confirm => 'Remove Question?', :method => :delete %></td>
+
+			<% elsif q.question_type == QuestionType.find(:first, :conditions => ["name = ?",'Choose-one']) %>
+				<td><%=h q.content %></td>
+				<td>Number of options:<%= q.McOptions.length %></td>
+				<td><%=h (q.question_type)? q.question_type.name : 'None' %></td>
+				<td><%= link_to "Options", assessment_question_mc_options_url(@assessment.id,q.id)%> |
+					<%= link_to 'Edit', q_edit_url( :id => @assessment, :q => q, :controller => "questions", :action => "edit") %> |
+					<%= link_to 'Destroy', assessment_question_path(@assessment, q), :confirm => 'Remove Question?', :method => :delete %></td>
+
+      <% elsif q.question_type == QuestionType.find(:first, :conditions => ["name = ?",'Text']) %>
+				<td><%=h q.content %></td>
+				<td><%=h (q.category)? q.category.name : 'None' %></td>
+				<td><%=h (q.question_type)? q.question_type.name : 'None' %></td>
+				<td><%= link_to 'Edit', q_edit_url( :id => @assessment, :q => q, :controller => "questions", :action => "edit") %> |
+					<%= link_to 'Destroy', assessment_question_path(@assessment, q), :confirm => 'Remove Question?', :method => :delete %></td>
+
+      <% else %>
+				<td><%=h q.content %></td>
+				<td><%= "ERROR, QUESTION WITH INVALID TYPE" %></td><%flash[:error]+='|QuestionType error|'%>
+
+      <%end%>
+    </tr>
+<% end %>
+</table>
+
+<h3>Categories</h3>
+
+<%= link_to 'Create a new category', new_assessment_category_path(@assessment) %>
+
+<table>
+  <thead>
+    <th>Categories</th>
+    <th>Parent</th>
+		<th>Actions</th>
+  </thead>
+
+<% @categories.each do |category| %>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td><%=h category.name %></td>
+    <td><%=h (category.parent_id)? Category.find(category.parent_id).name : '' %></td>
+    <td><%= link_to 'Edit', 
+					edit_assessment_category_path(@assessment, category) %> |
+    		<%= link_to 'Destroy', 
+					assessment_category_path(@assessment, category), 
+						:confirm => 'Are you sure?', 
+						:method => :delete %>
+		</td>
+  </tr>
+<% end %>
+</table>
+
+<h3>Results</h3>
+
+<%= link_to 'Add a new result', new_assessment_result_path(@assessment) %>
+
+<table>
+  <thead>
+    <th>Result Type</th>
+		<th>Actions</th>
+  </thead>
+
+<% @results.each do |result| %>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td><%=h result.result_type.name %></td>
+    <td><%= link_to 'Edit', 
+					edit_assessment_result_path(@assessment, result) %> |
+    		<%= link_to 'Destroy', 
+					assessment_result_path(@assessment, result), 
+						:confirm => 'Are you sure?', 
+						:method => :delete %>
+		</td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,31 @@
+%tr{ :class => cycle("odd", "even")}
+  %td= transaction.updated_at.to_date.readable_inspect
+  %td= transaction.transaction_type
+  %td
+    - if transaction.assessment
+      = transaction.assessment.title
+    - else
+      = 'N/A'
+  %td
+    - if transaction.group_name
+      =transaction.group_name
+    -elsif transaction.group
+      =transaction.group.name
+    -else
+      ='N/A'
+  %td
+    - if transaction.transaction_type == 'New Group' || transaction.transaction_type == 'Group Tokens'
+      = transaction.tokens
+    - else
+      = 'N/A'
+  %td
+    - if transaction.transaction_type == 'Gift'
+      = transaction.gift_email
+    - else
+      = 'N/A'
+  %td= transaction.cost
+  %td
+    = transaction.status
+    - if transaction.status != 'Completed'
+      = link_to "Pay", confirm_transaction_path(transaction), :confirm => 'Note: If you have already paid, please wait a few seconds for us to receive the confirmation - if you have not paid yet, you may pay now.'
+      = link_to "Cancel", transaction_path(transaction), :method => 'delete', :confirm => "Are you sure you want to cancel this transaction? Please do not do this if you have already paid for these points"

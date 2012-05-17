@@ -1,0 +1,45 @@
+$("#goals").append('<%= escape_javascript(render(:partial => "goal", :locals => { :goal => @goal })) %>');
+$('#goal_<%=@goal.id%>').hide().slideToggle();
+$('#goal_<%=@goal.id%> #goal_target').focus();
+$('#goals_instruction').hide();
+
+
+
+
+// redo all the javascripts from application.js - is there a better way to do this?
+$('a.ajax').live('click', function() {
+  $.get($(this).attr("href"));
+ return false;
+});
+
+//make forms with ajax class submit with ajax
+$('form.ajax').live('submit', function() {
+  $.post($(this).attr("action"), $(this).serialize(), null, "script");
+  return false;
+})
+
+//make inputs submit on click
+$('input.ajax').live('click', function() {
+  $(this).closest('form').submit();
+});
+
+//make select submit on change; However,
+//this only applies to the select on the current page
+//You have to do this again in the foo.js.erb for later selects that are generated
+$('select.ajax').change(function() {
+  $(this).closest('form').submit();
+});
+
+//make divs with ajax class follow its child link with ajax
+$('div.ajax').live('click', function() {
+   $.get($(this).find('a').attr("href"));
+   return false;
+});
+
+//make links with popup class use the fancybox dialog
+$('a.popup').fancybox({
+  'scrolling': 'no',
+  'titleShow': false,
+  'hideOnOverlayClick': false,
+  'centerOnScroll': true
+});

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  result_type_id:
+  assessment_id:
+  is_feedback: false
+
+two:
+  result_type_id:
+  assessment_id:
+  is_feedback: false

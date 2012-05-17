@@ -1,0 +1,11 @@
+$('#goal_<%=@goal.id%> > .description').html('<%= escape_javascript(render(:partial => "description", :locals => { :goal => @goal })) %>');
+$.fancybox.close();
+
+// Reapply javascript - application.js
+//make links with popup class use the fancybox dialog
+$('a.popup').fancybox({
+  'scrolling': 'no',
+  'titleShow': false,
+  'hideOnOverlayClick': false,
+  'centerOnScroll': true
+});

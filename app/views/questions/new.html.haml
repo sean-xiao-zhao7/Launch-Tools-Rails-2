@@ -1,0 +1,10 @@
+%h2 New Question
+-semantic_form_for [@assessment, @question] do |f|
+  - f.inputs do
+    = f.input :content, :label => 'Self Assessment Text'
+    = f.input :feedback_content, :label => 'Feedback Assessment Text'
+    =f.input :value
+    =f.input :category, :collection => @assessment.categories
+    =f.input :question_type
+  = f.buttons
+  = link_to 'Cancel', assessment_path(@assessment)

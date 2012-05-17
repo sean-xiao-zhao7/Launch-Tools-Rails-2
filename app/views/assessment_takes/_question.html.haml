@@ -1,0 +1,139 @@
+-#
+  *Form is called assessment_edit_form
+  *Each answer is accessed by:
+    1. Rate: assessment_take[answers_attributes][id][value]
+
+-# Source: http://www.plus2net.com/javascript_tutorial/checkbox-limit.php
+:javascript
+  function uncheck_answer(id) {
+    $('.answer_'+id).attr("checked", false);
+  }
+
+  function uncheck_dont_know_for_answer(id) {
+    $('.answer_dont_know_'+id).attr("checked", false);
+  }
+
+  function uncheck_none_option_for_answer(id) {
+    $('.answer_none_'+id).attr("checked", false);
+  }
+
+  function process_choose_many_for_answer(id, option_id) {
+    // Deselect the none and don't know options.
+    uncheck_dont_know_for_answer(id);
+    uncheck_none_option_for_answer(id);
+
+    // Check to see how many checkboxes have been checked.
+    var total = 0;
+    $('.answer_'+id).each(function(){
+      if(this.checked){
+        total = total +1;
+      }
+    });
+
+    // If more than 2 options are checked - prevent a third selection.
+    if (total > 2) {
+      alert("You can only select 2 options - please deselect a previous option if you would like to select this option.")
+      $('#'+option_id).attr("checked", false);
+      return false;
+    }        
+  }
+
+  function process_none_option_for_answer(id) {
+    uncheck_answer(id);
+    uncheck_dont_know_for_answer(id);
+  }
+
+  function process_dont_know_option_for_answer(id) {
+    uncheck_answer(id);
+    uncheck_none_option_for_answer(id);
+  }
+
+  function backup_code(id) {
+    var total=0;
+    for(var i=0; i < document.form1.ckb.length; i++){
+      if(document.form1.ckb[i].checked){
+        total =total +1;
+      }
+      if(total > 3){
+        alert("Please Select only three")
+        document.form1.ckb[j].checked = false ;
+        return false;
+      }
+    }
+  }
+
+- question_number = (((page - 1) * per_page + question_counter) + 1).to_s
+%li{ :id => "question_#{question_number}"}
+  - case question.question_type.name
+    - when "Rate"
+      - at.fields_for :answers, @assessment_take.answers.find_by_question_id(question) do |a|
+        .question_number= question_number
+        %ol.rate
+          %li
+            %table
+              %tr
+                -# Should only have 1-10, no 0.
+                - (1..10).to_a.each do |v|
+                  %td
+                    = a.label("value_#{v}", v)
+                    = a.radio_button( :value, v, { :class => "answer_#{a.object.id}", :onclick => "uncheck_dont_know_for_answer(#{a.object.id})" })
+              -# TODO: Should only show this for feedback takes
+              - if true #at.is_feedback?
+                %tr
+                  %td
+                    = a.check_box( :dont_know, { :class => "answer_dont_know_#{a.object.id}", :onclick => "uncheck_answer(#{a.object.id})" } )
+                    = a.label(:dont_know, "I don't know")
+
+        .question_content= a.label "answer_#{question_number}", a.object.question_content
+    - when "Choose-one"
+      - at.fields_for :answers, @assessment_take.answers.find_by_question_id(question) do |a|
+        .question_number= question_number
+        .question_content= a.label "answer_#{question_number}", a.object.question_content
+        %ol
+          - question.McOptions.each do |v|
+            %li
+              = a.radio_button :value, v.id, { :class => "answer_#{a.object.id}", :onclick => "uncheck_dont_know_for_answer(#{a.object.id})" }
+              - if @assessment_take.is_feedback?
+                .answer_content= v.feedback_content.personalize(@assessment_take.user.first_name, @assessment_take.user.gender)
+              - else
+                .answer_content= v.content
+          -# TODO: Should be for feedback only.
+          %li
+            = a.check_box( :dont_know, { :class => "answer_dont_know_#{a.object.id}", :onclick => "uncheck_answer(#{a.object.id})" } )
+            = a.label("dont_know", "I don't know")
+
+    - when "Choose-many"  
+      - len = question.McOptions.length
+      - ans = @assessment_take.answers.find_by_question_id(question)
+      .question_number= question_number
+      .question_content= ans.question_content
+      -# Note: The I don't know option requires fields_for - but fields_for is not used to process the options.
+      - at.fields_for :answers, @assessment_take.answers.find_by_question_id(question) do |a|
+        %ol
+          - question.McOptions.each_with_index do |mc, pos|
+            %li
+              = check_box_tag "cb[]" + ans.id.to_s + "[]", len-1-pos, ans.get(len-1-pos), { :id=>ans.id.to_s+pos.to_s, :class => "answer_#{a.object.id}", :onclick => "process_choose_many_for_answer(#{a.object.id},#{ans.id.to_s+pos.to_s})" }
+              - if @assessment_take.is_feedback?
+                .answer_content= label_tag ans.id.to_s+pos.to_s, mc.feedback_content.personalize(@assessment_take.user.first_name, @assessment_take.user.gender)
+              - else
+                .answer_content= label_tag ans.id.to_s+pos.to_s, mc.content
+          %li
+            -# None of the above option - processed automatically using form_for.
+            - none_checked = (a.object.value && a.object.value == 0)? true : false
+            -# TODO: Gabe: Need help on forming this check_box_tag
+            -#check_box("eula", "accepted", { :class => 'eula_check' }, "yes", "no")
+            = a.check_box( :value, { :checked => none_checked, :class => "answer_none_#{a.object.id}", :onclick => "process_none_option_for_answer(#{a.object.id})" }, 0, nil )
+            -# Don't use check_box tag as it forces a hidden field with an unchecked value
+            -#= a.check_box :value, { :class => "answer_none_#{a.object.id}", :onclick => "uncheck_answer(#{a.object.id})" }
+            = a.label("none_of_the_above", "None of the above.")                
+          %li
+            = a.check_box( :dont_know, { :class => "answer_dont_know_#{a.object.id}", :onclick => "process_dont_know_option_for_answer(#{a.object.id})" } )
+            = a.label("dont_know", "I don't know")
+    - when "Text"
+      - at.fields_for :answers, @assessment_take.answers.find_by_question_id(question) do |a|
+        %h3
+          = question_number
+          = a.label "answer_#{question_number}", a.object.question_content
+        = a.text_area :text
+    - else
+      Not implemented....

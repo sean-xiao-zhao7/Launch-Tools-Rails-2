@@ -1,0 +1,13 @@
+%tr{ :class => cycle("odd", "even")}
+  %td= group.name
+  %td= group.description
+  %td
+    = link_to 'View', group_path(group)
+    |
+    = link_to 'Edit', edit_group_path(group)
+    |
+    = link_to 'Destroy', group_path(group), :confirm => 'Are you sure?', :method => :delete
+    |
+    = link_to 'Members', group_memberships_path(group)
+    |
+    = link_to 'Invitations', group_invitations_path(group)

@@ -1,0 +1,19 @@
+-# Keep reloading until we get an ipn from paypal stating success
+-# The refresh is done only once every page load to allow for server requests to take longer than the timer
+
+:javascript
+  $(document).ready(function() {
+    setTimeout(function(){
+      location.reload(true);
+    }, 5000);
+  });
+-# Refreshing using a button
+-#<INPUT TYPE="button" VALUE="Reload Page" onClick="history.go(0)">
+-#<a href="javascript:location.reload(true)">Refresh this page</a>  
+
+-#
+  %h2 Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you.
+
+  %br
+
+  %h2 Please wait while we receive information from paypal. This may take upto 30 seconds.
